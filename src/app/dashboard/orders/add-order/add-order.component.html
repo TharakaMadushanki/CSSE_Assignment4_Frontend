@@ -1,0 +1,220 @@
+<div class="container-fluid">
+  <!-- Page Heading -->
+  <div class="row">
+    <div class="col-lg-12">
+      <h2>
+        Add Order Form
+      </h2>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <i class="fa fa-dashboard"></i>
+          <a routerLink="/dashboard/home">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">
+          <i class="fa fa-user-plus"></i> Add Orders
+        </li>
+      </ol>
+    </div>
+  </div>
+  <!-- /.row -->
+
+
+  <div class="row">
+    <div class="col-lg-12">
+
+      <form>
+        <label>
+          <h3>Company Details</h3>
+        </label>
+        <br>
+
+        <label>Company Name</label>
+
+        <div class="row">
+          <div class="col-md-6">
+
+            <input type="text" class="form-control" id="validationDefault01" placeholder="Company name" required>
+          </div>
+        </div>
+        <br>
+
+        <label>Contact Number</label>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <input type="text" class="form-control" id="validationDefault01" placeholder="Mobile" required>
+          </div>
+          <div class="col-md-6 mb-3">
+            <input type="text" class="form-control" id="validationDefault02" placeholder="Land line" required>
+          </div>
+          <div class="col-md-12">
+            <label>Company Address</label>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label>Street 1</label>
+                <input type="text" class="form-control" id="validationDefaultStreet1" placeholder="Street 01" required>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label>Street 2</label>
+                <input type="text" class="form-control" id="validationDefaultStreet2" placeholder="Street 02" required>
+              </div>
+              <br>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="validationDefault03">City</label>
+                <input type="text" class="form-control" id="validationDefaultCity" placeholder="City" required>
+                <div class="invalid-feedback">
+                  Please provide a valid city.
+                </div>
+              </div>
+              <div class="col-md-3 mb-3">
+                <label for="validationDefault04">State</label>
+                <input type="text" class="form-control" id="validationDefaultState" placeholder="State" required>
+                <div class="invalid-feedback">
+                  Please provide a valid state.
+                </div>
+              </div>
+              <div class="col-md-3 mb-3">
+                <label for="validationDefault05">Zip</label>
+                <input type="text" class="form-control" id="validationDefaultzip" placeholder="Zip" required>
+                <div class="invalid-feedback">
+                  Please provide a valid zip.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+       
+        <div class="form-group">
+          <label>Priority level</label>
+          <div class="row">         
+              <div class="col-md-6">
+                  <select class="form-control" required>
+                      <option>High</option>
+                      <option>Modarate</option>
+                      <option>low</option>
+                  </select>              
+              </div>
+          </div>
+        </div>
+        <br>
+
+
+      <!--add supplier details part-->
+
+        <label><h3>Supplier Details</h3></label>
+        <div class="row">
+          <div class="col-md-6">
+            <label>Supplier Name</label>
+            <input type="text" class="form-control" id="validationDefault01" placeholder="Supplier Name" required>
+          </div>
+        </div>  
+        <br>
+
+        <label>Contact Number</label>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <input type="text" class="form-control" id="validationDefault01" placeholder="Mobile" required>
+          </div>
+          <div class="col-md-6 mb-3">
+            <input type="text" class="form-control" id="validationDefault02" placeholder="Land line" required>
+          </div>
+        </div>
+        <br>
+
+        <!--item details part--> 
+        <label><h3>Order Items</h3></label>
+        <br>
+        <div class="row">
+          <div class="col-md-12">
+            <label>Order Number</label>
+            <input type="text" class="form-control" id="orderNum" placeholder="Order Number" required>
+          </div>
+        </div>
+        <br>
+
+        <div class="card" *ngIf="!isEditing">
+          <h4 class="card-header">Add new Order Item</h4>
+          <div class="card-block">
+            <form class="form-inline" style="text-align:center">
+              <div class="form-group">
+                  <div class="row">
+                      <div class="col-md-4 mb-3">
+                          <input class="form-control" type="text" name="item" formControlName="item" placeholder="Item">
+                      </div>
+                      <div class="col-md-4 mb-3">
+                          <input class="form-control" type="number" name="qty" formControlName="qty" placeholder="Qty" min="0">
+                      </div>
+                      <div class="col-md-4 mb-3">
+                          <button class="btn btn-primary" type="submit" [disabled]="!addCatForm.valid">
+                              <i class="fa fa-plus"></i> Add Item</button>
+                      </div>
+                  </div>               
+              </div>                         
+            </form>
+          </div>
+        </div>
+        <br>
+
+        <!--add order item part-->
+
+        <div class="card" *ngIf="!isLoading">
+          <h4 class="card-header">Current Order Items </h4>
+          <div class="card-block">
+            <table class="table table-bordered table-striped">
+              <thead class="thead-default">
+                <tr>
+                  <th>Item</th>
+                  <th>QTY</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody *ngIf="items.length === 0">
+                <tr>
+                  <td colspan="4">There are no curreut item in the order list.</td>
+                </tr>
+              </tbody>
+              <tbody *ngIf="!isEditing">
+                <tr *ngFor="let item of items">
+                  <td>{{item.item}}</td>
+                  <td>{{item.qty}}</td>              
+                  <td>
+                    <button class="btn btn-sm btn-warning" (click)="enableEditing(cat)">
+                      <i class="fa fa-pencil"></i> Edit</button>
+                    <button class="btn btn-sm btn-danger" (click)="deleteCat(cat)">
+                      <i class="fa fa-trash"></i> Delete</button>
+                  </td>
+                </tr>
+              </tbody>
+              <tbody *ngIf="isEditing">
+                <tr>
+                  <td colspan="4">
+                    <form class="form-inline" style="display:inline">
+                      <div class="form-group">
+                        <input class="form-control" type="text" name="item" >
+                      </div>
+                      <div class="form-group">
+                        <input class="form-control" type="number" name="qty" min="0">
+                      </div>
+                      <!-- <div class="form-group">
+                        <input class="form-control" type="number" name="weight" placeholder="Weight" step="any" min="0" required>
+                      </div> -->
+                      <button class="btn btn-sm btn-primary" type="submit">
+                        <i class="fa fa-floppy-o"></i> Save</button>
+                    </form>
+                    <button class="btn btn-sm btn-warning" (click)="cancelEditing()">
+                      <i class="fa fa-times"></i> Cancel</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <br>
+
+        <button class="btn btn-primary" type="submit">
+          <i class="fa fa-plus">Add Order</i>
+        </button>
+      </form>

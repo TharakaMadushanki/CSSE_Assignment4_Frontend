@@ -1,0 +1,63 @@
+
+
+<nav class="navbar-expand-lg navbar-dark bg-dark">
+  <button class="navbar-toggler navbar-toggler-left" type="button" (click)="sidebarCollapsed = !sidebarCollapsed" aria-controls="navbarSupportedContent"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+</nav>
+
+<div [collapse]="sidebarCollapsed" class="sidebar-collapse ">
+  <div id="sidebar-nav"  class="main_menu_side hidden-print main_menu">
+    <div class="menu_section">
+     <h2 style=" margin-top: 3%; " class="buttonManu"> <b>Menu</b></h2>
+      <h3>General</h3>
+      <ul class="nav side-menu">
+
+        <ng-container *ngFor="let item of menuList">
+
+          <li class="side-link"  *ngIf="item.children.length === 0">
+            <a [routerLink]="[item.link]" [routerLinkActive]="['active-link']" class="side-link" (click)="sidebarCollapsed = !sidebarCollapsed">
+              <span class="side-link"><i class="{{item.glyph}}"></i>{{item.name}}</span>
+            </a>
+          </li>
+
+          <li class="" *ngIf="item.children.length > 0">
+            <a [routerLink]="['users']" [routerLinkActive]="['router-link-active']" class="side-link" (click)="item.collapse = !item.collapse">
+              <span class="side-link"><i class="fa fa-users "></i>{{item.name}}</span>
+              <i *ngIf="!item.collapse" class="{{subMenuGlyphDown}} float-right" style="margin-left: 20px; margin-top: 5px " aria-hidden="true"></i>
+              <i *ngIf="item.collapse" class="{{subMenuGlyphUp}} float-right" style="margin-left: 20px; margin-top: 5px;" aria-hidden="true"></i>
+            </a>
+            <div [collapse]="item.collapse" style="color: white;">
+              <ul>
+                <li class="" *ngFor="let child of item.children">
+                  <a [routerLink]="[item.link + '/' + child.link]" [routerLinkActive]="['router-link-active']" (click)="sidebarCollapsed = !sidebarCollapsed" class="side-link">
+                    <i class="{{child.glyph}}"></i> &nbsp;<b style="font-size: 15px"> {{child.name}}</b>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ng-container>
+      </ul>
+
+    </div>
+  </div>
+    <div class="sidebar-footer hidden-small">
+      <a data-toggle="tooltip" data-placement="top" title="Settings">
+        <span class="fa fa-cog"  style="color:black;" aria-hidden="true"></span>
+      </a>
+      <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+        <span class="fa fa-arrows-alt" style="color:black;" aria-hidden="true"></span>
+      </a>
+      <a data-toggle="tooltip" data-placement="top" title="Lock">
+        <span class="fa fa-lock" style="color:black;" aria-hidden="true"></span>
+      </a>
+      <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+        <span class="fa fa-power-off" style="color:black;" aria-hidden="true"></span>
+      </a>
+    </div>
+
+</div>
+
+

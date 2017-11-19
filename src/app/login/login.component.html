@@ -1,0 +1,55 @@
+
+<div class="login-page">
+	<div class="row">
+		<div class="col-lg-4 offset-lg-4">
+        	<img src="assets/img/SB-admin.png" width="150px" class="user-avatar" />
+			<h1><a class="al-logo clearfix" >Procument <span>System</span></a></h1>
+      <h5>SLIIT CSSE</h5>
+      <h5>Sing In</h5>
+      <form class="login" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="form-content">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+            <input  formControlName="username"  id="email" type="text" class="form-control" name="email" placeholder="Email" (focus)="reset()" >
+          </div><br>
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+            <input  formControlName="password"  id="password" type="password" class="form-control" name="password" placeholder="Password" (focus)="reset()">
+          </div>
+          <!--Error Messages-->
+          <div *ngIf="loginForm.get('username').touched" >
+            <!--<div class="alert alert-danger" *ngIf="loginForm.get('username').hasError('required')">-->
+                <!--Username is required.-->
+            <!--</div>-->
+            <div class="alert alert-warning" *ngIf="loginForm.get('username').hasError('minlength')" >
+              Username must be at least 6 characters long.
+            </div>
+             </div>
+            <div class="alert alert-warning" *ngIf="EmptyCredential" >
+                 Username & Password Cannot be Empty!
+            </div>
+            <div class="alert alert-warning" *ngIf="invalidCredential">
+                  Invalid Username or Password! Please Try Again.
+          </div>
+          <!--Error Messages end-->
+          <div class="checkbox" style="float: right;" >
+            <label for="rememberme" >
+              Remember me
+            </label>
+            <input type="checkbox" id="rememberme">
+          </div>
+          <button [disabled]="" type="submit" class="btn btn-primary btn-block">Login</button>
+          <h5>-----------Or----------</h5>
+          <button [disabled]="" style="background-color: #17b009;" type="submit" class="btn btn-primary btn-block">Signup</button>
+          <!--[routerLink]="/signup"-->
+        </div>
+      </form>
+		</div>
+	</div>
+  <footer class="al-footer clearfix" >
+    <div class="al-footer-main clearfix" style="float: right; ">
+      <i class="fa fa-copyrigh"></i><b style="color: #313131; font-size: 12px">SLIIT; CSSE Assignment</b>
+    </div>
+  </footer>
+</div>
+

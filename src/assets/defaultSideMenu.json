@@ -1,0 +1,68 @@
+{
+    "data": [
+        {
+            "name": "Dashboard",
+            "link": "home",
+            "glyph": "fa fa-fw fa-dashboard",
+            "children": [],
+            "collapse": false
+        },
+        {
+            "name": "Orders",
+            "link": "order",
+            "glyph": "fa fa-newspaper-o",
+            "children": [
+              {
+                "name": "Add New Order",
+                "link": "Add_Order",
+                "glyph": "fa fa-plus"
+              },
+              {
+                "name": "View Order",
+                "link": "View_Order",
+                "glyph": "fa fa-eye"
+              },
+              {
+                "name": "View Order Details",
+                "link": "View_Order_Details",
+                "glyph": "fa fa-eye"
+              }
+            ],
+            "collapse": true
+          },
+       {
+        "name": "User Manager",
+        "link": "users",
+        "glyph": "fa fa-users",
+        "children": [
+          {
+            "name": "Add New User",
+            "link": "Add_User",
+            "glyph": "fa fa-user-plus "
+          },
+          {
+            "name": "View Users",
+            "link": "view_User",
+            "glyph": "fa fa-users "
+          }
+        ],
+        "collapse": true
+      },
+      {
+        "name": "Supplier Management",
+        "link": "supplier",
+        "glyph": "fa fa-users",
+        "children": [
+          {
+            "name": "Add Supplier",
+            "link": "Add_Supplier",
+            "glyph": "fa fa-user-plus "
+          }
+  
+        ],
+        "collapse": true
+        
+    }
+
+    ]
+}
