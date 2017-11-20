@@ -26,6 +26,16 @@
                 "name": "View Order Details",
                 "link": "View_Order_Details",
                 "glyph": "fa fa-eye"
+              },
+              {
+                "name": "View Special Orders",
+                "link": "View-Special-Items-Orders",
+                "glyph": "fa fa-eye"
+              },
+              {
+                "name": "View Higher Bill Orders",
+                "link": "View-Higher-Bill-Orders",
+                "glyph": "fa fa-eye"
               }
             ],
             "collapse": true
@@ -57,6 +67,11 @@
             "name": "Add Supplier",
             "link": "Add_Supplier",
             "glyph": "fa fa-user-plus "
+          },
+          {
+            "name": "View Supplier",
+            "link": "View_Supplier",
+            "glyph": "fa fa-eye"
           }
   
         ],

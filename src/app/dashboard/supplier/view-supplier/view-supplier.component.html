@@ -1,0 +1,101 @@
+
+<div class="container-fluid">
+  <!-- Page Heading -->
+  <div class="row">
+    <div class="col-lg-12">
+      <h2>
+        View Supplier Form
+      </h2>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <i class="fa fa-dashboard"></i>
+          <a routerLink="/dashboard/home">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">
+          <i class="fa fa-eye"></i> View supplier
+        </li>
+      </ol>
+    </div>
+  </div>
+  <!-- /.row -->
+
+
+  <div class="row">                           
+    <div class="col-lg-12">
+
+      <form>
+          <label><h3>Supplier Details</h3></label>
+          <br>
+                          
+          <div class="row">
+            <div class="col-md-4 mb-3">             
+              <input type="text" class="form-control" id="validationDefault01" placeholder="Supplier Name">
+            </div>
+            <div class="col-md-2 mb-3">             
+                <button class="btn btn-primary" type="submit"><i class="fa fa-search-plus"></i> Search</button>    
+            </div>                              
+          </div>
+          <br>
+      
+          <!--display order item part-->
+
+          <div class="card" *ngIf="!isLoading">
+            <h4 class="card-header">Supllier Name List</h4>
+            <div class="card-block">
+              <table class="table table-bordered table-striped">
+                <thead class="thead-default">
+                  <tr>                 
+                    <th>Supplier Name</th>
+                    <th>Address</th>
+                    <th>Contact</th>
+                    <th>Email Id</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody *ngIf="suppliers.length === 0">
+                  <tr>
+                    <td colspan="4">There are no curreut item in the order list.</td>
+                  </tr>  
+                </tbody>
+                <tbody *ngIf="!isEditing">
+                  <tr *ngFor="let supplier of suppliers">
+                    <td>{{supplier.supplierName}}</td>
+                    <td>{{supplier.address}}</td>
+                    <td>{{supplier.contact}}</td>
+                    <td>{{supplier.email}}</td>
+                    <td><button class="btn btn-primary" type="submit"><i class="fa fa-eye">Edit</i></button></td>
+                    <td><button class="btn btn-primary" type="submit"><i class="fa fa-window-close">Delete</i></button></td>
+                    
+                    <!-- <td>
+                      <button class="btn btn-sm btn-warning" (click)="enableEditing(cat)"><i class="fa fa-pencil"></i> Edit</button> 
+                      <button class="btn btn-sm btn-danger" (click)="deleteCat(cat)"><i class="fa fa-trash"></i> Delete</button>
+                    </td> -->
+                  </tr>  
+                </tbody>
+                <tbody *ngIf="isEditing">
+                  <tr>
+                    <td colspan="4">
+                      <form class="form-inline"  style="display:inline">
+                        <div class="form-group">
+                          <input class="form-control" type="text" name="supplierName"  placeholder="OrderId" required>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="address"  placeholder="address" required>
+                          </div>
+                        <div class="form-group">
+                          <input class="form-control" type="text" name="contact"  placeholder="contact" min="1" required>
+                        </div>
+                        <div class="form-group">
+                          <input class="form-control" type="text" name="email"  placeholder="email"  min="1" required>
+                        </div>                        
+                      </form>
+                      <button class="btn btn-primary" type="submit"><i class="fa fa-pencil-square-o">Edit</i></button>
+                      <button class="btn btn-primary" type="submit"><i class="fa fa-window-close">Delete</i></button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <br>             
+        </form>

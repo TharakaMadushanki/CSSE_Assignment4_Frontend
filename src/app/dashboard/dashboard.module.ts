@@ -18,6 +18,7 @@ import { AddOrderComponent } from './orders/add-order/add-order.component';
 import { ViewOrderComponent } from './orders/view-order/view-order.component';
 
 import { AddSupplierComponent } from './supplier/add-supplier/add-supplier.component';
+import { ViewSupplierComponent } from './supplier/view-supplier/view-supplier.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { AddSupplierComponent } from './supplier/add-supplier/add-supplier.compo
   ],
   declarations: [
     DashboardComponent,
-    AddSupplierComponent
+    AddSupplierComponent,
+    ViewSupplierComponent
   ]
 })
 export class DashboardModule { }

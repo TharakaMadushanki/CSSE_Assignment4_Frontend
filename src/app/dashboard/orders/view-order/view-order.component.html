@@ -91,10 +91,10 @@
                 </tbody>
                 <tbody *ngIf="!isEditing">
                   <tr *ngFor="let order of orders">
-                    <td>{{name.orderId}}</td>
-                    <td>{{name.suppiler}}</td>
-                    <td>{{name.site}}</td>
-                    <td>{{name.requiredDate}}</td>
+                    <td>{{order.orderId}}</td>
+                    <td>{{order.suppiler}}</td>
+                    <td>{{order.site}}</td>
+                    <td>{{order.requiredDate}}</td>
                     <td><button class="btn btn-primary" type="submit"><i class="fa fa-eye">View Order</i></button></td>
                     <td><button class="btn btn-primary" type="submit"><i class="fa fa-window-close">Cancel Order</i></button></td>
                     

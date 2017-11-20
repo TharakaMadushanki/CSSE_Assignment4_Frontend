@@ -12,8 +12,10 @@ import {ViewUsersComponent} from './user-manager/view-users/view-users.component
 import { AddOrderComponent } from './orders/add-order/add-order.component';
 import { ViewOrderComponent } from './orders/view-order/view-order.component';
 import { ViewOrderDetailsComponent } from './orders/view-order-details/view-order-details.component';
+import { ViewSpecialItemsOrdersComponent } from './orders/view-special-items-orders/view-special-items-orders.component';
+import { ViewHigherBillOrdersComponent } from './orders/view-higher-bill-orders/view-higher-bill-orders.component';
 import {AddSupplierComponent} from './supplier/add-supplier/add-supplier.component';
-
+import {ViewSupplierComponent} from './supplier/view-supplier/view-supplier.component';
 // import { ViewUsersComponent  } from './users-manager/view-users/view-users.component';
 
 const dashboardRoutes: Routes = [
@@ -37,13 +39,16 @@ const dashboardRoutes: Routes = [
                children : [
                    {path : 'Add_Order', component: AddOrderComponent},
                    {path : 'View_Order', component: ViewOrderComponent},
-                   {path : 'View_Order_Details', component: ViewOrderDetailsComponent}
+                   {path : 'View_Order_Details', component: ViewOrderDetailsComponent},
+                   {path : 'View-Special-Items-Orders', component: ViewSpecialItemsOrdersComponent},
+                   {path : 'View-Higher-Bill-Orders', component: ViewHigherBillOrdersComponent}
                ]
             },
             {
                 path : 'supplier',
                   children : [
-                      {path : 'Add_Supplier', component: AddSupplierComponent}
+                      {path : 'Add_Supplier', component: AddSupplierComponent},
+                      {path : 'View_Supplier', component: ViewSupplierComponent}
                       
                   ]
                },
