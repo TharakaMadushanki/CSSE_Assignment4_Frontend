@@ -42,6 +42,9 @@
         </thead>
 
         <tbody>
+          <!--setting the tr tag as angular container and adding for loop
+          in for loop company means the variable in component.ts file wich we save the responece data
+          -->
           <ng-container *ngFor="let comp of company">
             <tr class="edit" id="detail">
               <td id="no" class="text-center"> {{comp.companyID}} </td>

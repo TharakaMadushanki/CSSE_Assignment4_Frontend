@@ -14,18 +14,20 @@ export class ViewUsersComponent implements OnInit {
   company : any = [];
 
   constructor(private http: Http) { }
-
-  ngOnInit() {
+//this function is automatically called when the specific page(view User.html) is load
+    ngOnInit() {
+      //calling the two functions to extract data
     this.getData();
     this.getCompany();
   }
 
-
+//getting data from the get request
   getData(){
     return this.http.get('http://localhost:4000/procument/company')
     .map((res: Response)=>res.json())
   }
 
+  //adding data to company vaiable (define upper) which are got from getdata() 
   getCompany(){
     this.getData().subscribe(com=> {
       console.log(com);
