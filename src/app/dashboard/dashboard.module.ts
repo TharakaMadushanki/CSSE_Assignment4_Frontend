@@ -23,6 +23,7 @@ import { ViewSupplierComponent } from './supplier/view-supplier/view-supplier.co
 import { InvoiceComponent } from './invoice/invoice.component';
 import { CreateInvoiceComponent } from './invoice/create-invoice/create-invoice.component';
 import { ViewInvoiceComponent } from './invoice/view-invoice/view-invoice.component';
+import { CheckInvoiceComponent } from './invoice/check-invoice/check-invoice.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { ViewInvoiceComponent } from './invoice/view-invoice/view-invoice.compon
     ViewSupplierComponent,
     InvoiceComponent,
     CreateInvoiceComponent,
-    ViewInvoiceComponent
+    ViewInvoiceComponent,
+    CheckInvoiceComponent
   ]
 })
 export class DashboardModule { }

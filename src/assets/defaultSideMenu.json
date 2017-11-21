@@ -44,7 +44,7 @@
               }
             ],
             "collapse": true
-          },
+       },
        {
         "name": "User Manager",
         "link": "users",
@@ -58,7 +58,7 @@
           {
             "name": "View Users",
             "link": "view_User",
-            "glyph": "fa fa-users "
+            "glyph": "fa fa-eye"
           }
         ],
         "collapse": true
@@ -80,9 +80,31 @@
           }
   
         ],
+        "collapse": true        
+      },
+      {
+        "name": "Invoice",
+        "link": "invoice",
+        "glyph": "fa fa-pencil-square-o",
+        "children": [
+          {
+            "name": "Create Invoice",
+            "link": "Create_Invoice",
+            "glyph": "fa fa-pencil"
+          },
+          {
+            "name": "View Invoice",
+            "link": "View_Invoice",
+            "glyph": "fa fa-eye"
+          },
+          {
+            "name": "Check Invoice",
+            "link": "Check_Invoice",
+            "glyph": "fa fa-check-square"
+          }
+        ],
         "collapse": true
-        
-    }
+     }
 
     ]
 }
