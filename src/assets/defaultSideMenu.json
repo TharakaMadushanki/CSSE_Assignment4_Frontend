@@ -36,6 +36,11 @@
                 "name": "View Higher Bill Orders",
                 "link": "View-Higher-Bill-Orders",
                 "glyph": "fa fa-eye"
+              },
+              {
+                "name": "Make An Inquiry",
+                "link": "Make-An-Inquiry",
+                "glyph": "fa fa-envelope"
               }
             ],
             "collapse": true

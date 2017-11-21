@@ -14,6 +14,8 @@ import { ViewOrderComponent } from './orders/view-order/view-order.component';
 import { ViewOrderDetailsComponent } from './orders/view-order-details/view-order-details.component';
 import { ViewSpecialItemsOrdersComponent } from './orders/view-special-items-orders/view-special-items-orders.component';
 import { ViewHigherBillOrdersComponent } from './orders/view-higher-bill-orders/view-higher-bill-orders.component';
+import { MakeAnInquiryComponent } from './orders/make-an-inquiry/make-an-inquiry.component';
+
 import {AddSupplierComponent} from './supplier/add-supplier/add-supplier.component';
 import {ViewSupplierComponent} from './supplier/view-supplier/view-supplier.component';
 // import { ViewUsersComponent  } from './users-manager/view-users/view-users.component';
@@ -41,7 +43,9 @@ const dashboardRoutes: Routes = [
                    {path : 'View_Order', component: ViewOrderComponent},
                    {path : 'View_Order_Details', component: ViewOrderDetailsComponent},
                    {path : 'View-Special-Items-Orders', component: ViewSpecialItemsOrdersComponent},
-                   {path : 'View-Higher-Bill-Orders', component: ViewHigherBillOrdersComponent}
+                   {path : 'View-Higher-Bill-Orders', component: ViewHigherBillOrdersComponent},
+                   {path : 'Make-An-Inquiry', component: MakeAnInquiryComponent}
+                   
                ]
             },
             {
