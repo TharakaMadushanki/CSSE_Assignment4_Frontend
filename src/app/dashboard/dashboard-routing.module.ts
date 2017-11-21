@@ -18,6 +18,10 @@ import { MakeAnInquiryComponent } from './orders/make-an-inquiry/make-an-inquiry
 
 import {AddSupplierComponent} from './supplier/add-supplier/add-supplier.component';
 import {ViewSupplierComponent} from './supplier/view-supplier/view-supplier.component';
+
+import {CreateInvoiceComponent} from './invoice/create-invoice/create-invoice.component';
+import {ViewInvoiceComponent} from './invoice/view-invoice/view-invoice.component';
+
 // import { ViewUsersComponent  } from './users-manager/view-users/view-users.component';
 
 const dashboardRoutes: Routes = [
@@ -54,8 +58,17 @@ const dashboardRoutes: Routes = [
                       {path : 'Add_Supplier', component: AddSupplierComponent},
                       {path : 'View_Supplier', component: ViewSupplierComponent}
                       
-                  ]
-               },
+                ]
+            },
+            {
+                path : 'invoice',
+                  children : [
+                       {path : 'Create_Invoice', component: CreateInvoiceComponent},
+                       {path : 'View_Invoice', component: ViewInvoiceComponent}
+                      
+                ]
+            },
+
         ]
     }
 ];

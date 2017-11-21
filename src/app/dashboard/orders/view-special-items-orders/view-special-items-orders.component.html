@@ -28,7 +28,7 @@
           <br>
                   
           <div class="row">
-            <div class="col-md-6 mb-3" id="validationDefault01">
+            <div class="col-md-4 mb-3" id="validationDefault01">
               <label>Order Status</label>  
               <select class="form-control">
                 <option disabled selected value> -- select an option -- </option>
@@ -38,7 +38,7 @@
                 <option value="closed">Closed</option>
               </select>              
             </div>
-            <div class="col-md-6 mb-3">  
+            <div class="col-md-4 mb-3">  
               <label>Supplier Name</label>             
               <select class="form-control">
                   <option disabled selected value> -- select an option -- </option>
@@ -50,24 +50,40 @@
             </div>
           </div>
           <br>
-              
-          <label>Order Id</label>
+           
           <div class="row">
-            <div class="col-md-4 mb-3">             
-              <input type="text" class="form-control" id="validationDefault01" placeholder="Order Id"  required>
-            </div>
-            <div class="col-md-2 mb-3">             
-                <button class="btn btn-primary" type="submit"><i class="fa fa-search-plus"></i> Search</button>    
-            </div> 
-            <div class="col-md-4 mb-3">             
-                <input type="text" class="form-control" id="validationDefault01" placeholder="Date Range">
+              <div class="col-md-4 mb-3">        
+                  <label> Search by Order Id </label>
+                  <div class="form-group">
+                    <div class="input-group">
+                      <input type="text" class="form-control input-md" name="search">
+                      <div class="input-group-btn">
+                        <button type="button" class="btn btn-md btn-warning">
+                          <span class=" glyphicon glyphicon-search">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                          </span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>         
               </div>
-              <div class="col-md-2 mb-3">             
-                  <button class="btn btn-primary" type="submit"><i class="fa fa-search-plus"></i> Search</button>    
-              </div>                    
-          </div>
-          <br>
-      
+              <div class="col-md-4 mb-3">        
+                  <label> Search by Date Range</label>
+                  <div class="form-group">
+                    <div class="input-group">
+                      <input type="text" class="form-control input-md" name="search">
+                      <div class="input-group-btn">
+                        <button type="button" class="btn btn-md btn-warning">
+                          <span class=" glyphicon glyphicon-search">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                          </span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>         
+              </div>             
+            </div>
+
           <!--display higher bill orders part-->
 
           <div class="card" *ngIf="!isLoading">

@@ -20,6 +20,10 @@ import { ViewOrderComponent } from './orders/view-order/view-order.component';
 import { AddSupplierComponent } from './supplier/add-supplier/add-supplier.component';
 import { ViewSupplierComponent } from './supplier/view-supplier/view-supplier.component';
 
+import { InvoiceComponent } from './invoice/invoice.component';
+import { CreateInvoiceComponent } from './invoice/create-invoice/create-invoice.component';
+import { ViewInvoiceComponent } from './invoice/view-invoice/view-invoice.component';
+
 
 @NgModule({
   imports: [
@@ -38,7 +42,10 @@ import { ViewSupplierComponent } from './supplier/view-supplier/view-supplier.co
   declarations: [
     DashboardComponent,
     AddSupplierComponent,
-    ViewSupplierComponent
+    ViewSupplierComponent,
+    InvoiceComponent,
+    CreateInvoiceComponent,
+    ViewInvoiceComponent
   ]
 })
 export class DashboardModule { }
