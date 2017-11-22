@@ -39,7 +39,7 @@
       
           <!--display order item part-->
 
-          <div class="card" *ngIf="!isLoading">
+          <div class="card">
             <h4 class="card-header">Supllier Name List</h4>
             <div class="card-block">
               <table class="table table-bordered table-striped">
@@ -52,27 +52,29 @@
                     <th>Actions</th>
                   </tr>
                 </thead>
-                <tbody *ngIf="suppliers.length === 0">
+                <!-- <tbody *ngIf="suppliers.length === 0">
                   <tr>
                     <td colspan="4">There are no curreut item in the order list.</td>
                   </tr>  
+                </tbody> -->
+                <tbody>
+                  <ng-container *ngFor="let supplier of suppliers">
+                    <tr class="view-supplier">
+                      <td id="supName" class="text-center">{{supplier.supplierName}}</td>
+                      <td id="add" class="text-center">{{supplier.Address}}</td>
+                      <td id="contact" class="text-center">{{supplier.contactNumber.landline}} <br>
+                        {{supplier.contactNumber.Mobile}}</td>
+                      <td id="email" class="text-center">{{supplier.email}}</td>
+                      <td id="actions" class="text-center"><button class="btn btn-primary" type="submit"><i class="fa fa-pencil">Edit</i></button>&nbsp;&nbsp;<button class="btn btn-primary" type="submit"><i class="fa fa-eraser">Delete</i></button></td>
+                                          
+                      <!-- <td>
+                        <button class="btn btn-sm btn-warning" (click)="enableEditing(cat)"><i class="fa fa-pencil"></i> Edit</button> 
+                        <button class="btn btn-sm btn-danger" (click)="deleteCat(cat)"><i class="fa fa-trash"></i> Delete</button>
+                      </td> -->
+                    </tr>
+                  </ng-container>  
                 </tbody>
-                <tbody *ngIf="!isEditing">
-                  <tr *ngFor="let supplier of suppliers">
-                    <td>{{supplier.supplierName}}</td>
-                    <td>{{supplier.address}}</td>
-                    <td>{{supplier.contact}}</td>
-                    <td>{{supplier.email}}</td>
-                    <td><button class="btn btn-primary" type="submit"><i class="fa fa-eye">Edit</i></button></td>
-                    <td><button class="btn btn-primary" type="submit"><i class="fa fa-window-close">Delete</i></button></td>
-                    
-                    <!-- <td>
-                      <button class="btn btn-sm btn-warning" (click)="enableEditing(cat)"><i class="fa fa-pencil"></i> Edit</button> 
-                      <button class="btn btn-sm btn-danger" (click)="deleteCat(cat)"><i class="fa fa-trash"></i> Delete</button>
-                    </td> -->
-                  </tr>  
-                </tbody>
-                <tbody *ngIf="isEditing">
+                <!-- <tbody *ngIf="isEditing">
                   <tr>
                     <td colspan="4">
                       <form class="form-inline"  style="display:inline">
@@ -93,7 +95,7 @@
                       <button class="btn btn-primary" type="submit"><i class="fa fa-window-close">Delete</i></button>
                     </td>
                   </tr>
-                </tbody>
+                </tbody> -->
               </table>
             </div>
           </div>
