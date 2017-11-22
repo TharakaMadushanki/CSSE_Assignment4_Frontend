@@ -28,6 +28,9 @@
             <div class="alert alert-warning" *ngIf="EmptyCredential" >
                  Username & Password Cannot be Empty!
             </div>
+            <div class="alert alert-warning" *ngIf="notRegisterd" >
+              Username is not registered! please register first!!!
+         </div>
             <div class="alert alert-warning" *ngIf="invalidCredential">
                   Invalid Username or Password! Please Try Again.
           </div>
@@ -40,7 +43,7 @@
           </div>
           <button [disabled]="" type="submit" class="btn btn-primary btn-block">Login</button>
           <h5>-----------Or----------</h5>
-          <button [disabled]="" style="background-color: #17b009;" type="submit" class="btn btn-primary btn-block">Signup</button>
+          <a routerLink="/signup"><button [disabled]="" style="background-color: #17b009;" type="submit" class="btn btn-primary btn-block">Signup</button></a>
           <!--[routerLink]="/signup"-->
         </div>
       </form>
