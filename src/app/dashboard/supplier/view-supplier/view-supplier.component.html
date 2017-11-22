@@ -61,11 +61,11 @@
                   <ng-container *ngFor="let supplier of suppliers">
                     <tr class="view-supplier">
                       <td id="supName" class="text-center">{{supplier.supplierName}}</td>
-                      <td id="add" class="text-center">{{supplier.Address}}</td>
-                      <td id="contact" class="text-center">{{supplier.contactNumber.landline}} <br>
+                      <td id="add" class="text-center" contenteditable="true">{{supplier.Address}}</td>
+                      <td id="contact" class="text-center" contenteditable="true">{{supplier.contactNumber.landline}} <br>
                         {{supplier.contactNumber.Mobile}}</td>
-                      <td id="email" class="text-center">{{supplier.email}}</td>
-                      <td id="actions" class="text-center"><button class="btn btn-primary" type="submit"><i class="fa fa-pencil">Edit</i></button>&nbsp;&nbsp;<button class="btn btn-primary" type="submit"><i class="fa fa-eraser">Delete</i></button></td>
+                      <td id="email" class="text-center" contenteditable="true">{{supplier.email}}</td>
+                      <td id="actions" class="text-center"><button class="btn btn-primary" type="submit"><i class="fa fa-pencil" ng-click="updateSupplier(supplier._id)">Edit</i></button>&nbsp;&nbsp;<button class="btn btn-primary" type="submit"><i class="fa fa-eraser">Delete</i></button></td>
                                           
                       <!-- <td>
                         <button class="btn btn-sm btn-warning" (click)="enableEditing(cat)"><i class="fa fa-pencil"></i> Edit</button> 
