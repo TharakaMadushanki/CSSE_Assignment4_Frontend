@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Http, Response } from '@angular/http';
-import { HttpModule } from '@angular/http'
+import { HttpModule } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 @Component({
@@ -23,7 +23,7 @@ export class ViewUsersComponent implements OnInit {
 
 //getting data from the get request
   getData(){
-    return this.http.get('http://localhost:4000/procument/company')
+    return this.http.get('http://localhost:8080/procument/company')
     .map((res: Response)=>res.json())
   }
 
@@ -31,7 +31,7 @@ export class ViewUsersComponent implements OnInit {
   getCompany(){
     this.getData().subscribe(com=> {
       console.log(com);
-      this.company = com
+      this.company = com;
     })
   }
 
