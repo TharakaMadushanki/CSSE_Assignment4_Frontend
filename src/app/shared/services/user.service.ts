@@ -22,7 +22,7 @@ export class UserService {
   // Attemp Login to the System
   attemptLogin(credentials: adminUser) {
     this.destroyAuth();
-    return this.apiService.post('/users/login', {user: credentials})
+    return this.apiService.post('http://localhost:8080/procument/user/', {user: credentials})
     .map(
       data => {
         this.setAuth(data.user);
@@ -33,8 +33,6 @@ export class UserService {
 
   // Store Authorization Information
   setAuth(user: adminUser) {
-    // Save JWT sent from server in localstorage
-    this.jwtService.saveToken(user.token);
     // Set current user data into observable
     this.currentUserSubject.next(user);
     // Set isAuthenticated to true
