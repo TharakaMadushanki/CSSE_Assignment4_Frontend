@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Http, Response, HttpModule } from '@angular/http';
+import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'app-view-invoice',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewInvoiceComponent implements OnInit {
 
-  constructor() { }
+  invoice: any[''];
+
+  constructor(private http: Http) { }
 
   ngOnInit() {
+
+    this.invoice = this.getInvoiceDetails()
+  }
+
+  getInvoiceDetails() {
+    return this.http.get('http://localhost:8080/procument/invoices')
+      .map((res: Response) => res.json())
   }
 
 }
+
