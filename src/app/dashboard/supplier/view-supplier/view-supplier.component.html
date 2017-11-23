@@ -23,7 +23,7 @@
   <div class="row">                           
     <div class="col-lg-12">
 
-      <form>
+      <form role="form" [formGroup]="supplierForm">
           <label><h3>Supplier Details</h3></label>
           <br>
                           
@@ -40,7 +40,7 @@
           <!--display order item part-->
 
           <div class="card">
-            <h4 class="card-header">Supllier Name List</h4>
+            <h4 class="card-header">Supplier Name List</h4>
             <div class="card-block">
               <table class="table table-bordered table-striped">
                 <thead class="thead-default">
@@ -60,12 +60,12 @@
                 <tbody>
                   <ng-container *ngFor="let supplier of suppliers">
                     <tr class="view-supplier">
-                      <td id="supName" class="text-center">{{supplier.supplierName}}</td>
-                      <td id="add" class="text-center">{{supplier.Address}}</td>
-                      <td id="contact" class="text-center">{{supplier.contactNumber.landline}} <br>
+                      <td id="supplierName" class="text-center" formControlName="supplierName">{{supplier.supplierName}}</td>
+                      <td id="address" class="text-center" contenteditable="true" formControlName="address">{{supplier.Address}}</td>
+                      <td id="contactNumber" class="text-center" contenteditable="true" formControlName="contactNumber">{{supplier.contactNumber.landline}} <br>
                         {{supplier.contactNumber.Mobile}}</td>
-                      <td id="email" class="text-center">{{supplier.email}}</td>
-                      <td id="actions" class="text-center"><button class="btn btn-primary" type="submit"><i class="fa fa-pencil">Edit</i></button>&nbsp;&nbsp;<button class="btn btn-primary" type="submit"><i class="fa fa-eraser">Delete</i></button></td>
+                      <td id="email" class="text-center" contenteditable="true" formControlName="email">{{supplier.email}}</td>
+                      <td id="actions" class="text-center"><button class="btn btn-primary" type="submit"><i class="fa fa-pencil" ng-click="updateSupplier(supplier._id)">Edit</i></button>&nbsp;&nbsp;<button class="btn btn-primary" type="submit"><i class="fa fa-eraser">Delete</i></button></td>
                                           
                       <!-- <td>
                         <button class="btn btn-sm btn-warning" (click)="enableEditing(cat)"><i class="fa fa-pencil"></i> Edit</button> 
