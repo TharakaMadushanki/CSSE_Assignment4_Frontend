@@ -12,7 +12,7 @@ import { AddUserComponent } from './dashboard/user-manager/add-user/add-user.com
 const appRoutes: Routes = [
     { path: '', redirectTo: '/login', pathMatch: 'full' },
     { path: '**', redirectTo: '/login', pathMatch: 'full' },
-    // { path: 'signup', redirectTo: '/signup', pathMatch: 'full' }
+    { path: 'signup', redirectTo: '/signup', pathMatch: 'full' }
 ];
 
 @NgModule({

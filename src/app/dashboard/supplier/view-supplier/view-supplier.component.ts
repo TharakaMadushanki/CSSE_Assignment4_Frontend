@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { HttpModule } from '@angular/http'
 import 'rxjs/add/operator/map';
-import { FormGroup,FormBuilder,Validators } from '@angular/forms';
+import { FormGroup,FormBuilder,Validators,ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-view-supplier',
@@ -15,6 +15,8 @@ export class ViewSupplierComponent implements OnInit {
   supplierForm: FormGroup;
 
   constructor(private http: Http, private formBuilder: FormBuilder) { }
+
+ 
   //this function is automatically called when the specific page is loaded
   ngOnInit() {
     //calling the two functions to extract data
@@ -28,7 +30,7 @@ export class ViewSupplierComponent implements OnInit {
       email: ['', Validators.required],
     })
   }
-
+  
   //getting Supplier data from the GET request
   getSupplierData() {
     return this.http.get('http://localhost:4000/procument/supplier')

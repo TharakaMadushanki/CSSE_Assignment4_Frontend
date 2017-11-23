@@ -9,7 +9,7 @@
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
           <i class="fa fa-dashboard"></i>
-          <a routerLink="/dashboard/home">Dashboard</a>
+          <a >Dashboard</a>
         </li>
         <li class="breadcrumb-item active">
           <i class="fa fa-user-plus"></i> View Orders
@@ -40,14 +40,12 @@
             </div>
             <div class="col-md-4 mb-3">  
               <label>Supplier Name</label>             
-              <select class="form-control">
-                  <option disabled selected value> -- select an option -- </option>
-                  <option value="thara">Thara</option>
-                  <option value="poo">Poo</option>
-                  <option value="esh">Nadi</option>
-                  <option value="nadi">Esh</option>
-                </select> 
-            </div>
+              <select class="form-control" ng-model="selected">
+                <ng-container *ngFor="let supplier of suppliers">
+                  <option value=""> {{supplier.supplierName}} </option>   
+                </ng-container>              
+              </select>
+            </div>            
           </div>
           <br>
 
@@ -101,7 +99,7 @@
                     <th>Cancel Order</th>
                   </tr>
                 </thead>
-                <tbody *ngIf="orders.length === 0">
+                <!-- <tbody *ngIf="orders.length === 0">
                   <tr>
                     <td colspan="4">There are no curreut item in the order list.</td>
                   </tr>  
@@ -114,15 +112,15 @@
                     <td>{{order.requiredDate}}</td>
                     <td>{{order.status}}</td>
                     <td><button class="btn btn-primary" type="submit"><i class="fa fa-eye">View Order</i></button></td>
-                    <td><button class="btn btn-primary" type="submit"><i class="fa fa-window-close">Cancel Order</i></button></td>
+                    <td><button class="btn btn-primary" type="submit"><i class="fa fa-window-close">Cancel Order</i></button></td> -->
                     
                     <!-- <td>
                       <button class="btn btn-sm btn-warning" (click)="enableEditing(cat)"><i class="fa fa-pencil"></i> Edit</button> 
                       <button class="btn btn-sm btn-danger" (click)="deleteCat(cat)"><i class="fa fa-trash"></i> Delete</button>
                     </td> -->
-                  </tr>  
-                </tbody>
-                <tbody *ngIf="isEditing">
+                  <!-- </tr>  
+                </tbody> -->
+                <!-- <tbody *ngIf="isEditing">
                   <tr>
                     <td colspan="4">
                       <form class="form-inline"  style="display:inline">
@@ -146,7 +144,7 @@
                       <button class="btn btn-primary" type="submit"><i class="fa fa-window-close">Cancel Order</i></button>
                     </td>
                   </tr>
-                </tbody>
+                </tbody> -->
               </table>
             </div>
           </div>
