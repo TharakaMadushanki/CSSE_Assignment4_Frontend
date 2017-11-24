@@ -12,7 +12,7 @@
           <a >Dashboard</a>
         </li>
         <li class="breadcrumb-item active">
-          <i class="fa fa-user-plus"></i> View Orders
+          <i class="fa fa-eye"></i> View Orders
         </li>
       </ol>
     </div>
@@ -33,17 +33,17 @@
               <select class="form-control" (change)="onChangeState($event)">
                 <option selected value></option>
                 <option value="pending">Pending</option>
-                <option value="inProgress">In Progress</option>
+                <option value="inProgress">InProgress</option>
                 <option value="resolved">Resolved</option>
                 <option value="closed">Closed</option>
               </select>              
             </div>
             <div class="col-md-4 mb-3">  
               <label>Supplier Name</label>             
-              <select class="form-control" ng-model="selected" >
+              <select class="form-control" ng-model="selected"  (change)="onChangeSupplier($event)">
                 <option selected value></option>   
                 <ng-container *ngFor="let supplier of suppliers">
-                  <option value=""> {{supplier.supplierName}} </option>   
+                  <option value="{{supplier.supplierName}}"> {{supplier.supplierName}} </option>   
                 </ng-container>              
               </select>
             </div>            
@@ -55,9 +55,11 @@
                   <label> Search by Order Id </label>
                   <div class="form-group">
                     <div class="input-group">
-                      <input type="text" class="form-control input-md" name="search">
+                      <input  #searchId type="text" class="form-control" 
+                              (focusout)="focusOutOrderIdInput(searchId.value)">
                       <div class="input-group-btn">
-                        <button type="button" class="btn btn-md btn-warning">
+                        <button type="button" class="btn btn-md btn-warning" 
+                        (click)="onClickSearchByOrderId(searchId.value)">
                           <span class=" glyphicon glyphicon-search">
                             <i class="fa fa-search" aria-hidden="true"></i>
                           </span>
@@ -70,9 +72,11 @@
                   <label> Search by Date</label>
                   <div class="form-group">
                     <div class="input-group">
-                      <input type="text" class="form-control input-md" name="search">
+                      <input  #searchDate type="text" class="form-control input-md" 
+                      (focusout)="focusOutDateInput(searchDate.value)">
                       <div class="input-group-btn">
-                        <button type="button" class="btn btn-md btn-warning">
+                        <button type="button" class="btn btn-md btn-warning"
+                        (click)="onClickSearchByDate(searchDate.value)">
                           <span class=" glyphicon glyphicon-search">
                             <i class="fa fa-search" aria-hidden="true"></i>
                           </span>
@@ -85,7 +89,7 @@
                               
           <!--display order item part-->
 
-          <div class="card" *ngIf="!isLoading">
+          <div class="card">
             <h4 class="card-header">Current Order Items </h4>
             <div class="card-block">
               <table class="table table-bordered table-striped">
@@ -108,10 +112,12 @@
                       <td id="site" class="text-center">{{order.siteName}}</td>
                       <td id="date" class="text-center">{{order.requiredDate}}</td>
                       <td id="status" class="text-center">{{order.orderStatusBySM}}</td>
-                      <td id="actions" class="text-center"><button class="btn btn-primary" type="submit"><i class="fa fa-eye">View Order</i></button></td>
+                      <td id="actions" class="text-center">
+                          <a routerLink="/dashboard/order/View_Order_Details" 
+                          [queryParams]="{ orderId: order._id }"><button class="btn btn-primary" type="submit" 
+                            (click)="viewBtnClick(order._id)"><i class="fa fa-eye">View Order</i></button></a></td>
                       <td><button class="btn btn-primary" type="submit"><i class="fa fa-window-close">Cancel Order</i></button></td>
-
-                                          
+                                                               
                       <!-- <td>
                         <button class="btn btn-sm btn-warning" (click)="enableEditing(cat)"><i class="fa fa-pencil"></i> Edit</button> 
                         <button class="btn btn-sm btn-danger" (click)="deleteCat(cat)"><i class="fa fa-trash"></i> Delete</button>
