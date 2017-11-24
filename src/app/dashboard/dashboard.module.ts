@@ -24,7 +24,12 @@ import { InvoiceComponent } from './invoice/invoice.component';
 import { CreateInvoiceComponent } from './invoice/create-invoice/create-invoice.component';
 import { ViewInvoiceComponent } from './invoice/view-invoice/view-invoice.component';
 import { CheckInvoiceComponent } from './invoice/check-invoice/check-invoice.component';
+<<<<<<< HEAD
 import { ReactiveFormsModule } from '@angular/forms';
+=======
+import { ReactiveFormsModule  } from '@angular/forms';
+
+>>>>>>> develop
 
 @NgModule({
   imports: [
@@ -48,7 +53,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     InvoiceComponent,
     CreateInvoiceComponent,
     ViewInvoiceComponent,
-    CheckInvoiceComponent
+    CheckInvoiceComponent,
+    ViewOrderComponent
   ]
 })
 export class DashboardModule { }

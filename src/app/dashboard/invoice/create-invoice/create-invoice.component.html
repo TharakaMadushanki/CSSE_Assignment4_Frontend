@@ -22,7 +22,11 @@
   <div class="row">
     <div class="col-lg-12">
 
+<<<<<<< HEAD
       <form [formGroup]="">
+=======
+      <form [formGroup]="invoiceForm"> 
+>>>>>>> develop
         <label>
           <h3>Invoice Details</h3>
         </label>
@@ -41,106 +45,68 @@
               <label>Date</label>
           </div>
           <div class="col-md-4 mb-3">
-            <input type="text" class="form-control" placeholder="put date picker here instead input">
+            <input type="text" class="form-control" formControlName="InvoiceDate" placeholder="put date picker here instead input">
           </div>
         </div>
         <br>
 
         <div class="row">
-            <div class="col-md-1 mb-3">
-                <label>order ID</label> 
-            </div> 
-          <div class="col-md-4 mb-3">              
-            <select class="form-control" ng-model="selected" required>
-              <ng-container *ngFor="let order of orders">
-                  <option value=""> {{order.orderId}} </option>   
-              </ng-container>              
-            </select>
-          </div>
-        </div>        
-        <br>
+          <div class="col-md-1 mb-3">
+            <label>Site Name</label>
+        </div>
+        <div class="col-md-4 mb-3">
+          <input type="text" class="form-control"  formControlName="Site" placeholder="Site Name">
+        </div>
 
+        <div class="col-md-1 mb-3">
+          <label>order ID</label> 
+      </div> 
+    <div class="col-md-4 mb-3">              
+      <select class="form-control" ng-model="selected" required formControlName="orderid" #sel (change)="callType(sel.value)">
+        <ng-container >
+            <option *ngFor="let orderid of order" [value]="orderid.OrderID"> {{orderid.OrderID}} </option>   
+        </ng-container>              
+      </select>
+    </div>
+
+
+        </div>
+<br>
+               
+        
         
         <!--add item part -->
 
         <div class="card" *ngIf="!isEditing">
-          <h4 class="card-header">Add Order Items</h4>
+          <h4 class="card-header">Add Invoice Items</h4>
           <div class="card-block">
+<<<<<<< HEAD
             <form class="form-inline" style="text-align:center" [formGroup]="">
+=======
+           
+>>>>>>> develop
               <div class="form-group">
                   <div class="row">
                       <div class="col-md-4 mb-3">
-                          <input class="form-control" type="text" name="item" formControlName="item" placeholder="Item">
+                          <input class="form-control" type="text" name="item" placeholder="Item" formControlName="item">
                       </div>
                       <div class="col-md-4 mb-3">
-                          <input class="form-control" type="number" name="qty" formControlName="qty" placeholder="Qty" min="0">
+                          <input class="form-control" type="number" name="qty" placeholder="Qty" min="0" formControlName="qty">
                       </div>
                       <div class="col-md-4 mb-3">
-                          <button class="btn btn-primary" type="submit" [disabled]="!addCatForm.valid">
-                              <i class="fa fa-plus"></i> Add Item</button>
-                      </div>
+                        <input class="form-control" type="number" name="Unit price" placeholder="Unit Price" min="0" formControlName="UnitPrice">
+                    </div>
+                    <div class="col-md-4 mb-3">
+                      <input class="form-control" type="text" name="Amount" placeholder="Amount" min="0" formControlName="Amount">
+                  </div>
+                      
                   </div>               
               </div>                         
-            </form>
+            
           </div>
         </div>
         <br>
 
-        <!--add order item part-->
-
-        <div class="card" *ngIf="!isLoading">
-          <h4 class="card-header"> Order Items List</h4>
-          <div class="card-block">
-            <table class="table table-bordered table-striped">
-              <thead class="thead-default">
-                <tr>
-                  <th>Item</th>
-                  <th>QTY</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody *ngIf="items.length === 0">
-                <tr>
-                  <td colspan="4">There are no curreut item in the order list.</td>
-                </tr>
-              </tbody>
-              <tbody *ngIf="!isEditing">
-                <tr *ngFor="let item of items">
-                  <td>{{item.item}}</td>
-                  <td>{{item.qty}}</td>              
-                  <td>
-                    <button class="btn btn-sm btn-warning" (click)="enableEditing(cat)">
-                      <i class="fa fa-pencil"></i> Edit</button>
-                    <button class="btn btn-sm btn-danger" (click)="deleteCat(cat)">
-                      <i class="fa fa-trash"></i> Delete</button>
-                  </td>
-                </tr>
-              </tbody>
-              <!-- <tbody *ngIf="isEditing">
-                <tr>
-                  <td colspan="4">
-                    <form class="form-inline" style="display:inline">
-                      <div class="form-group">
-                        <input class="form-control" type="text" name="item" >
-                      </div>
-                      <div class="form-group">
-                        <input class="form-control" type="number" name="qty" min="0">
-                      </div> -->
-                      <!-- <div class="form-group">
-                        <input class="form-control" type="number" name="weight" placeholder="Weight" step="any" min="0" required>
-                      </div> -->
-                      <!-- <button class="btn btn-sm btn-primary" type="submit">
-                        <i class="fa fa-floppy-o"></i> Save</button>
-                    </form>
-                    <button class="btn btn-sm btn-warning" (click)="cancelEditing()">
-                      <i class="fa fa-times"></i> Cancel</button>
-                  </td>
-                </tr>
-              </tbody> -->
-            </table>
-          </div>
-        </div>
-        <br>
 
         <div class="row">
             <div class="col-md-6 mb-3">                                             
@@ -158,7 +124,7 @@
               <div class="col-md-8 mb-3">                                             
               </div>            
               <div class="col-md-4 mb-3">                                        
-                  <button class="btn btn-primary" type="submit">
+                  <button class="btn btn-primary" type="submit" (click)="AddInvoice()">
                       <i class="fa fa-share-square">Sent to Accountant</i>
                     </button>
               </div>                    
