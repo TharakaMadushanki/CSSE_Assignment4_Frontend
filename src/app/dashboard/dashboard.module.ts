@@ -25,6 +25,7 @@ import { CreateInvoiceComponent } from './invoice/create-invoice/create-invoice.
 import { ViewInvoiceComponent } from './invoice/view-invoice/view-invoice.component';
 import { CheckInvoiceComponent } from './invoice/check-invoice/check-invoice.component';
 import { ReactiveFormsModule  } from '@angular/forms';
+import { ViewOrderBySupplierComponent } from './invoice/view-order-by-supplier/view-order-by-supplier.component';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { ReactiveFormsModule  } from '@angular/forms';
     CreateInvoiceComponent,
     ViewInvoiceComponent,
     CheckInvoiceComponent,
-    ViewOrderComponent
+    ViewOrderComponent,
+    ViewOrderBySupplierComponent
   ]
 })
 export class DashboardModule { }
