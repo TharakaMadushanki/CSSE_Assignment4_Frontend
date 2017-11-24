@@ -30,8 +30,8 @@
           <div class="row">
             <div class="col-md-4 mb-3" id="validationDefault01">
               <label>Order Status</label>  
-              <select class="form-control">
-                <option disabled selected value> -- select an option -- </option>
+              <select class="form-control" (change)="onChangeState($event)">
+                <option selected value></option>
                 <option value="pending">Pending</option>
                 <option value="inProgress">In Progress</option>
                 <option value="resolved">Resolved</option>
@@ -40,7 +40,8 @@
             </div>
             <div class="col-md-4 mb-3">  
               <label>Supplier Name</label>             
-              <select class="form-control" ng-model="selected">
+              <select class="form-control" ng-model="selected" >
+                <option selected value></option>   
                 <ng-container *ngFor="let supplier of suppliers">
                   <option value=""> {{supplier.supplierName}} </option>   
                 </ng-container>              
@@ -66,7 +67,7 @@
                   </div>         
               </div>
               <div class="col-md-4 mb-3">        
-                  <label> Search by Date Range</label>
+                  <label> Search by Date</label>
                   <div class="form-group">
                     <div class="input-group">
                       <input type="text" class="form-control input-md" name="search">
@@ -99,6 +100,25 @@
                     <th>Cancel Order</th>
                   </tr>
                 </thead>
+                <tbody>
+                  <ng-container *ngFor="let order of orders">
+                    <tr class="view-order">
+                      <td id="orderId" class="text-center">{{order.OrderID}}</td>
+                      <td id="supplier" class="text-center">{{order.supplierName}}</td>
+                      <td id="site" class="text-center">{{order.siteName}}</td>
+                      <td id="date" class="text-center">{{order.requiredDate}}</td>
+                      <td id="status" class="text-center">{{order.orderStatusBySM}}</td>
+                      <td id="actions" class="text-center"><button class="btn btn-primary" type="submit"><i class="fa fa-eye">View Order</i></button></td>
+                      <td><button class="btn btn-primary" type="submit"><i class="fa fa-window-close">Cancel Order</i></button></td>
+
+                                          
+                      <!-- <td>
+                        <button class="btn btn-sm btn-warning" (click)="enableEditing(cat)"><i class="fa fa-pencil"></i> Edit</button> 
+                        <button class="btn btn-sm btn-danger" (click)="deleteCat(cat)"><i class="fa fa-trash"></i> Delete</button>
+                      </td> -->
+                    </tr>
+                  </ng-container>  
+                </tbody>
                 <!-- <tbody *ngIf="orders.length === 0">
                   <tr>
                     <td colspan="4">There are no curreut item in the order list.</td>
