@@ -21,6 +21,7 @@ import {ViewSupplierComponent} from './supplier/view-supplier/view-supplier.comp
 
 import {CreateInvoiceComponent} from './invoice/create-invoice/create-invoice.component';
 import {ViewInvoiceComponent} from './invoice/view-invoice/view-invoice.component';
+import {ViewOrderBySupplierComponent} from './invoice/view-order-by-supplier/view-order-by-supplier.component';
 import {CheckInvoiceComponent} from './invoice/check-invoice/check-invoice.component';
 
 
@@ -67,7 +68,8 @@ const dashboardRoutes: Routes = [
                   children : [
                        {path : 'Create_Invoice', component: CreateInvoiceComponent},
                        {path : 'View_Invoice', component: ViewInvoiceComponent},
-                       {path : 'Check_Invoice', component: CheckInvoiceComponent}
+                       {path : 'Check_Invoice', component: CheckInvoiceComponent},
+                       {path : 'View_Order_sup', component: ViewOrderBySupplierComponent}
                       
                 ]
             },

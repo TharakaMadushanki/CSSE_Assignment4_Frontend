@@ -93,6 +93,11 @@
             "glyph": "fa fa-pencil"
           },
           {
+            "name": "View Orders",
+            "link": "View_Order_sup",
+            "glyph": "fa fa-pencil"
+          },
+          {
             "name": "View Invoice",
             "link": "View_Invoice",
             "glyph": "fa fa-eye"

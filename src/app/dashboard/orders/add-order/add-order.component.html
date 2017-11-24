@@ -22,7 +22,7 @@
     <div class="row">
       <div class="col-lg-12">
   
-        <form>
+        <form [formGroup]="AddorderForm">
           <label>
             <h3>Site Details</h3>
           </label>
@@ -31,7 +31,7 @@
           <div class="row">
             <div class="col-md-6 mb-3">  
               <label>Site Name</label>             
-              <select class="form-control" ng-model="selected" id="siteName" (change)="onChangeSite($event)"required>
+              <select class="form-control" ng-model="selected" id="siteName" (change)="onChangeSite($event)"  formControlName="sitename" required>
                   <option selected value></option>
                   <ng-container *ngFor="let site of sites">
                       <option value="{{site.siteName}}"> {{site.siteName}} </option>   
@@ -44,10 +44,10 @@
           <label>Contact Details</label>
           <div class="row">
             <div class="col-md-6 mb-3">
-              <input type="text" class="form-control"  id="siteMobile" placeholder="Mobile">
+              <input type="text" class="form-control"  id="siteMobile" placeholder="Mobile" formControlName="sitemobile">
             </div>
             <div class="col-md-6 mb-3">
-              <input type="text" class="form-control" id="siteLand" placeholder="Land line">
+              <input type="text" class="form-control" id="siteLand" placeholder="Land line" formControlName="sitelandline">
             </div>
           </div>
           <br>
@@ -55,7 +55,7 @@
           <div class="row">
             <div class="col-md-6">
               <label>Address</label>
-              <textarea class="form-control" type="textarea" id="address" placeholder="address"></textarea>
+              <textarea class="form-control" type="textarea" id="address" placeholder="address" formControlName="siteAddress"></textarea>
             </div>
           </div>  
           <br>  
@@ -66,7 +66,7 @@
         <div class="row">
         <div class="col-md-4 mb-3">  
             <label>Supplier Name</label>             
-            <select class="form-control" ng-model="selected" (change)="onChangeSupplier($event)">
+            <select class="form-control" ng-model="selected" (change)="onChangeSupplier($event)" formControlName="Suppliername">
               <option selected value></option>   
               <ng-container *ngFor="let supplier of suppliers">
                 <option value="{{supplier.supplierName}}"> {{supplier.supplierName}} </option>   
@@ -79,10 +79,10 @@
           <label>Contact Details</label>
           <div class="row">
             <div class="col-md-6 mb-3">
-              <input type="text" class="form-control" id="validationDefault01" placeholder="Mobile"  readonly>
+              <input type="text" class="form-control" id="validationDefault01" placeholder="Mobile" formControlName="suplandline"  readonly>
             </div>
             <div class="col-md-6 mb-3">
-              <input type="text" class="form-control" id="validationDefault02" placeholder="Land line"  readonly>
+              <input type="text" class="form-control" id="validationDefault02" placeholder="Land line" formControlName="supmobile" readonly>
             </div>
           </div>
           <br>
@@ -90,7 +90,7 @@
           <div class="row">
             <div class="col-md-6">
               <label>Address</label>
-              <textarea class="form-control" type="textarea" id="address" placeholder="address"  readonly></textarea>
+              <textarea class="form-control" type="textarea" id="address" placeholder="address" formControlName="supaddress" readonly></textarea>
             </div>
           </div>  
           <br>
@@ -98,7 +98,7 @@
           <div class="row">
               <div class="col-md-6">
                 <label>Email Id</label>
-                <input type="text" class="form-control" id="validationDefault01" placeholder="Email Id" readonly>
+                <input type="text" class="form-control" id="validationDefault01" placeholder="Email Id" formControlName="supemail" readonly>
               </div>
             </div>  
           <br>
@@ -109,14 +109,14 @@
           <div class="row">
               <div class="col-md-6">
                 <label>Order Id</label>
-                <input  type="text" class="form-control input-md">
+                <input  type="text" class="form-control input-md" formControlName="orderId">
               </div>
             </div>
             <br>
           <div class="row">
             <div class="col-md-6">
               <label>Required Date</label>
-              <input  type="text" class="form-control input-md" placeholder="YYYY-MM-DD">
+              <input  type="text" class="form-control input-md" placeholder="YYYY-MM-DD" formControlName="reqdate">
             </div>
           </div>
           <br>
@@ -125,7 +125,7 @@
               <label>Priority level</label>
               <div class="row">         
                   <div class="col-md-6">
-                      <select class="form-control" required>
+                      <select class="form-control" formControlName="priority" (change)="onChangePriority($event)"  required>
                           <option>High</option>
                           <option>Modarate</option>
                           <option>low</option>
@@ -138,11 +138,11 @@
           <div class="card" >
             <h4 class="card-header">Add new Order Item</h4>
             <div class="card-block">
-              <form class="form-inline" style="text-align:center">
+              
                 <div class="form-group">
                     <div class="row">
                         <div class="col-md-3 mb-3">
-                            <select class="form-control" ng-model="selected" formControlName="itemName">
+                            <select class="form-control" ng-model="selected" formControlName="itemname" (change)="onChangeItem($event)">
                                 <option selected value></option>   
                                 <ng-container *ngFor="let item of items">
                                   <option value="{{item.itemName}}"> {{item.itemName}} </option>   
@@ -153,17 +153,17 @@
                             <input class="form-control" type="number" name="qty" formControlName="qty" placeholder="Quantity" min="0">
                         </div>
                         <div class="col-md-2 mb-3">
-                            <input class="form-control" formControlName="itemCode" placeholder="ItemCode" >
+                            <input class="form-control" formControlName="itemcode" placeholder="ItemCode" >
                         </div>
                         <div class="col-md-2 mb-3">
                             <input class="form-control" formControlName="category" placeholder="category" >
                         </div>
                         <div class="col-md-2 mb-3">
-                            <input class="form-control" formControlName="unitPrice" placeholder="unitPrice" >
+                            <input class="form-control" formControlName="unitprice" placeholder="unitPrice" >
                         </div>                                            
                     </div>                                                                        
                 </div>                         
-              </form>
+              
             </div>          
           </div>
           <br>
@@ -174,13 +174,13 @@
                     <label>Total Price</label>                                              
               </div>             
               <div class="col-md-2 mb-3">                                        
-                    <input type="text" class="form-control" id="validationDefault01" readonly>
+                    <input type="text" class="form-control" formControlName="totalAmount" id="validationDefault01">
               </div>                    
           </div>
           <br>
           <div class="row"> 
             <div class="col-md-2 mb-3"> 
-              <button class="btn btn-primary" type="submit">
+              <button class="btn btn-primary" type="submit" (click)="addOrder()">
                   <i class="fa fa-plus">Add Order</i>
               </button>
              </div>

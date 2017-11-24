@@ -8,12 +8,14 @@ import { ViewOrderDetailsComponent } from './view-order-details/view-order-detai
 import { ViewSpecialItemsOrdersComponent } from './view-special-items-orders/view-special-items-orders.component';
 import { ViewHigherBillOrdersComponent } from './view-higher-bill-orders/view-higher-bill-orders.component';
 import { MakeAnInquiryComponent } from './make-an-inquiry/make-an-inquiry.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule
   ],
   declarations: [ AddOrderComponent , OrdersComponent, /*ViewOrderComponent,*/ ViewOrderDetailsComponent, ViewSpecialItemsOrdersComponent, ViewHigherBillOrdersComponent, MakeAnInquiryComponent ]
 })
