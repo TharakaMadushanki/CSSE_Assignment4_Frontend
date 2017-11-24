@@ -24,6 +24,7 @@ import { InvoiceComponent } from './invoice/invoice.component';
 import { CreateInvoiceComponent } from './invoice/create-invoice/create-invoice.component';
 import { ViewInvoiceComponent } from './invoice/view-invoice/view-invoice.component';
 import { CheckInvoiceComponent } from './invoice/check-invoice/check-invoice.component';
+import { ReactiveFormsModule  } from '@angular/forms';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { CheckInvoiceComponent } from './invoice/check-invoice/check-invoice.com
     FormsModule,
     BsElementsModule,
     UserManagerModule,
-    OrdersManagerModule
+    OrdersManagerModule,
+    ReactiveFormsModule
   ],
   declarations: [
     DashboardComponent,
@@ -47,7 +49,8 @@ import { CheckInvoiceComponent } from './invoice/check-invoice/check-invoice.com
     InvoiceComponent,
     CreateInvoiceComponent,
     ViewInvoiceComponent,
-    CheckInvoiceComponent
+    CheckInvoiceComponent,
+    ViewOrderComponent
   ]
 })
 export class DashboardModule { }

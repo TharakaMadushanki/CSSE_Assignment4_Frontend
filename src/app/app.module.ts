@@ -10,8 +10,6 @@ import {ApiService} from './shared/services/api.service';
 import {HttpClientModule} from '@angular/common/http';
 
 
-
-
 @NgModule({
   declarations: [
     AppComponent

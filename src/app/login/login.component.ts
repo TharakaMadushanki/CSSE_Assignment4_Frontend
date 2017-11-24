@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
       console.log('typed un '+user.username);
       console.log('typed pw '+ user.password);
 
-      (this.http.get('http://localhost:8080/procument/user/'+user.username)
+      (this.http.get('http://localhost:4000/procument/user/'+user.username)
       .map((res: Response) => res.json())).subscribe(dbuser => {
         if (dbuser != null) {
           loginpassword = dbuser.password;
