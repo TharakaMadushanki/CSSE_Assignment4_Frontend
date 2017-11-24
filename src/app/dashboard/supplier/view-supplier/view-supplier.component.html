@@ -28,12 +28,15 @@
           <br>
                           
           <div class="row">
-            <div class="col-md-4 mb-3">             
-              <input type="text" class="form-control" id="validationDefault01" placeholder="Supplier Name">
-            </div>
-            <div class="col-md-2 mb-3">             
-                <button class="btn btn-primary" type="submit"><i class="fa fa-search-plus"></i> Search</button>    
-            </div>                              
+            <div class="col-md-4 mb-3">  
+              <label>Supplier Name</label>             
+              <select id="sup" class="form-control" ng-model="selected">
+                  <option selected value></option>
+                <ng-container *ngFor="let supplier of suppliers">
+                  <option value=""> {{supplier.supplierName}} </option>   
+                </ng-container>              
+              </select>
+            </div>                            
           </div>
           <br>
       
