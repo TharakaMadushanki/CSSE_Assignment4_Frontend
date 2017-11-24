@@ -30,8 +30,8 @@
           <div class="row">
             <div class="col-md-4 mb-3" id="validationDefault01">
               <label>Order Status</label>  
-              <select class="form-control">
-                <option disabled selected value> -- select an option -- </option>
+              <select class="form-control" (change)="onChangeStatus($event)">
+                <option selected value></option>
                 <option value="pending">Pending</option>
                 <option value="inProgress">In Progress</option>
                 <option value="resolved">Resolved</option>
@@ -40,13 +40,12 @@
             </div>
             <div class="col-md-4 mb-3">  
               <label>Supplier Name</label>             
-              <select class="form-control">
-                  <option disabled selected value> -- select an option -- </option>
-                  <option value="thara">Thara</option>
-                  <option value="poo">Poo</option>
-                  <option value="esh">Nadi</option>
-                  <option value="nadi">Esh</option>
-                </select> 
+              <select class="form-control" ng-model="selected" (change)="onChangeSupplier($event)">
+                  <option selected value></option>
+                  <ng-container *ngFor="let supplier of suppliers">
+                    <option value="{{supplier.supplierName}}"> {{supplier.supplierName}} </option>
+                  </ng-container>
+                </select>
             </div>
           </div>
           <br>
@@ -56,9 +55,9 @@
                   <label> Search by Order Id </label>
                   <div class="form-group">
                     <div class="input-group">
-                      <input type="text" class="form-control input-md" name="search">
+                        <input #searchId type="text" class="form-control" (focusout)="focusOutOrderIdInput(searchId.value)">
                       <div class="input-group-btn">
-                        <button type="button" class="btn btn-md btn-warning">
+                          <button type="button" class="btn btn-md btn-warning" (click)="onClickSearchByOrderId(searchId.value)">
                           <span class=" glyphicon glyphicon-search">
                             <i class="fa fa-search" aria-hidden="true"></i>
                           </span>
@@ -68,12 +67,12 @@
                   </div>         
               </div>
               <div class="col-md-4 mb-3">        
-                  <label> Search by Date Range</label>
+                  <label> Search by Date</label>
                   <div class="form-group">
                     <div class="input-group">
-                      <input type="text" class="form-control input-md" name="search">
+                        <input #searchDate type="text" class="form-control input-md" name="search" (focusout)="focusOutDateInput(searchDate.value)">
                       <div class="input-group-btn">
-                        <button type="button" class="btn btn-md btn-warning">
+                          <button type="button" class="btn btn-md btn-warning" (click)="onClickSearchByDate(searchDate.value)">
                           <span class=" glyphicon glyphicon-search">
                             <i class="fa fa-search" aria-hidden="true"></i>
                           </span>
@@ -96,8 +95,7 @@
                     <th>Supplier</th>
                     <th>Site</th>
                     <th>Required Date</th>
-                    <th>Status</th>
-                    <th>View Details</th>
+                    <th>Status</th>                    
                     <th>Action</th>
                   </tr>
                 </thead>
@@ -108,11 +106,11 @@
                 </tbody>
                 <tbody *ngIf="!isEditing">
                   <tr *ngFor="let order of orders">
-                    <td>{{order.orderId}}</td>
-                    <td>{{order.suppiler}}</td>
-                    <td>{{order.site}}</td>
-                    <td>{{order.requiredDate}}</td>
-                    <td>{{order.status}}</td>
+                      <td>{{order.OrderID}}</td>
+                      <td>{{order.supplierName}}</td>
+                      <td>{{order.siteName}}</td>
+                      <td>{{order.requiredDate}}</td>
+                      <td>{{order.orderStatusBySM}}</td>
                     <td><button class="btn btn-primary" type="submit"><i class="fa fa-eye">View Order</i></button></td>
                     <td><button class="btn btn-primary" type="submit"><i class="fa fa-window-close">ACCEPT</i></button><button class="btn btn-primary" type="submit"><i class="fa fa-window-close">DECLINE</i></button></td>
                     
@@ -142,7 +140,6 @@
                           <input class="form-control" type="text" name="status"  placeholder="Status">
                         </div>                       
                       </form>
-                      <button class="btn btn-primary" type="submit"><i class="fa fa-eye">View Order</i></button>
                       <button class="btn btn-primary" type="submit"><i class="fa fa fa-check">ACCEPT</i></button>
                      <button class="btn btn-primary" type="submit"><i class="fa fa-window-close">DECLINE</i></button>
                     </td>

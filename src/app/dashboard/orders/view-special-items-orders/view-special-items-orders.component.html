@@ -97,7 +97,6 @@
                   <th>Site</th>
                   <th>Required Date</th>
                   <th>Status</th>
-                  <th>View Details</th>
                   <th>Action</th>
                 </tr>
               </thead>
@@ -113,11 +112,7 @@
                   <td>{{order.siteName}}</td>
                   <td>{{order.requiredDate}}</td>
                   <td>{{order.orderStatusBySM}}</td>
-                  <td>
-                    <button class="btn btn-primary" type="submit">
-                      <i class="fa fa-eye">View Order</i>
-                    </button>
-                  </td>
+
                   <td>
                     <button class="btn btn-primary" type="submit">
                       <i class="fa fa-check-square-o">ACCEPT</i>
@@ -153,9 +148,7 @@
                         <input class="form-control" type="text" name="status" placeholder="Status">
                       </div>
                     </form>
-                    <button class="btn btn-primary" type="submit">
-                      <i class="fa fa-eye">View Order</i>
-                    </button>
+
                     <button class="btn btn-primary" type="submit">
                       <i class="fa fa fa-check">ACCEPT</i>
                     </button>
