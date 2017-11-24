@@ -25,7 +25,7 @@ export class CreateInvoiceComponent implements OnInit {
 
   ngOnInit() {
 
-    this.getCompany();
+    this.getOrder();
 
     this.invoiceForm = new FormGroup({
       InvoiceDate: new FormControl('', [Validators.required]),
@@ -79,7 +79,7 @@ export class CreateInvoiceComponent implements OnInit {
       .map((res: Response) => res.json())
   }
 
-  getCompany(){
+  getOrder(){
     this.getOrderData().subscribe(ord=> {
       console.log(ord);
       this.order = ord;
