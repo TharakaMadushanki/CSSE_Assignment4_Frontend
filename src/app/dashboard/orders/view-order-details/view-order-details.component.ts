@@ -25,7 +25,7 @@ export class ViewOrderDetailsComponent implements OnInit {
       this.orderID = params['orderId'];
       console.log("DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD"+this.orderID);
 
-      this.http.get('http://localhost:4000/procument//placeOrder/Oid/'+this.orderID)
+      return this.http.get('http://localhost:4000/procument/placeOrder/Oid/'+this.orderID)
       .map((res: Response)=>res.json()).subscribe(order=> {
         console.log(order);       
        this.orders = order

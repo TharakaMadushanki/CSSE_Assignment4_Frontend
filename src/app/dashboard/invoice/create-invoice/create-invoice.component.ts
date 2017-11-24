@@ -13,12 +13,9 @@ export class CreateInvoiceComponent implements OnInit {
 
   invoiceForm: FormGroup;
   invoiceadditemForm: FormGroup;
-  itemlist: any = {};
-  orders: any = {};
   order: any = [];
-  siteName : String;
-  Isempty : boolean = false;
   orderID : any;
+  orderByID: any = [];
 
 
   constructor(private http: Http) { }
@@ -41,6 +38,9 @@ export class CreateInvoiceComponent implements OnInit {
   }
   callType(val){
     this.orderID = val;
+    this.getOrderByID(val);
+    console.log(this.orderByID);
+    this.invoiceForm.controls['Site'].setValue(this.orderByID.siteName);
   }
 
   AddInvoice() {
@@ -53,7 +53,7 @@ export class CreateInvoiceComponent implements OnInit {
       unitPrice : this.invoiceForm.controls['UnitPrice'].value,
       Amount : this.invoiceForm.controls['Amount'].value,
     }
-    console.log(this.invoiceForm.controls['Site'].value+ " "+this.invoiceForm.controls['InvoiceDate'].value + " " + this.invoiceForm.controls['orderid'].value + " " + this.invoiceForm.controls['item'].value + " " + this.invoiceForm.controls['qty'].value + " " +this.invoiceForm.controls['UnitPrice'].value + " " + this.invoiceForm.controls['Amount'].value);
+    
     
     
     if(this.invoiceForm.controls['Site'].value == "" || this.invoiceForm.controls['InvoiceDate'].value == "" || this.invoiceForm.controls['orderid'].value == "" || this.invoiceForm.controls['item'].value == "" || this.invoiceForm.controls['qty'].value == "" || this.invoiceForm.controls['UnitPrice'].value == "" || this.invoiceForm.controls['Amount'].value == "")
@@ -61,7 +61,7 @@ export class CreateInvoiceComponent implements OnInit {
       alert("fill the all the field and try again!!!")
     }
     else{
-    console.log(invoice);
+    
     this.http.post('http://localhost:4000/procument/invoice', invoice).subscribe(
       function(response) { 
         alert("Invoice Added Successfully!!!");
@@ -75,14 +75,25 @@ export class CreateInvoiceComponent implements OnInit {
   }
 
   getOrderData() {
-    return this.http.get('http://localhost:4000/procument/placeOrder')
+    return this.http.get('http://localhost:4000/procument/placeOrder/uppermanagerstatus/Accepted')
+      .map((res: Response) => res.json())
+  }
+
+  getOrderDataByID(orderID) {
+    return this.http.get('http://localhost:4000/procument/placeOrder/id/'+orderID)
       .map((res: Response) => res.json())
   }
 
   getOrder(){
     this.getOrderData().subscribe(ord=> {
-      console.log(ord);
       this.order = ord;
+    })
+  }
+
+  getOrderByID(id){
+    this.getOrderDataByID(id).subscribe(ord=> {
+      console.log(ord);
+      this.orderByID = ord;
     })
   }
   
