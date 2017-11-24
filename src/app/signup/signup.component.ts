@@ -41,7 +41,14 @@ export class SignupComponent implements OnInit {
           password: this.signupForm.controls['password'].value
         };
       console.log(adduser);// adduser var contains all our form values. store it where you want
-      this.http.post('http://localhost:4000/procument/user', adduser).subscribe(); 
+      this.http.post('http://localhost:4000/procument/user', adduser).subscribe(
+        function(response) { 
+          alert("User Added Successfully!!! Go to the login page and login to the system!!!");
+        },
+        function(error) {
+          alert("Error happened" + error);
+        },
+      ); 
       this.signupForm.reset();// this will reset our form values to null 
         
         
