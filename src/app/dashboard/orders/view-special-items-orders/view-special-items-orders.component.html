@@ -1,4 +1,3 @@
-
 <div class="container-fluid">
   <!-- Page Heading -->
   <div class="row">
@@ -20,136 +19,154 @@
   <!-- /.row -->
 
 
-  <div class="row">                           
+  <div class="row">
     <div class="col-lg-12">
 
       <form>
-          <label><h3>Higher Special Orders Details</h3></label>
-          <br>
-                  
-          <div class="row">
-            <div class="col-md-4 mb-3" id="validationDefault01">
-              <label>Order Status</label>  
-              <select class="form-control">
-                <option disabled selected value> -- select an option -- </option>
-                <option value="pending">Pending</option>
-                <option value="inProgress">In Progress</option>
-                <option value="resolved">Resolved</option>
-                <option value="closed">Closed</option>
-              </select>              
-            </div>
-            <div class="col-md-4 mb-3">  
-              <label>Supplier Name</label>             
-              <select class="form-control">
-                  <option disabled selected value> -- select an option -- </option>
-                  <option value="thara">Thara</option>
-                  <option value="poo">Poo</option>
-                  <option value="esh">Nadi</option>
-                  <option value="nadi">Esh</option>
-                </select> 
+        <label>
+          <h3>Special Items Orders Details</h3>
+        </label>
+        <br>
+
+        <div class="row">
+          <div class="col-md-4 mb-3" id="validationDefault01">
+            <label>Order Status</label>
+            <select class="form-control" (change)="onChangeStatus($event)">
+              <option selected value></option>
+              <option value="Pending">Pending</option>
+              <option value="InProgress">InProgress</option>
+              <option value="Resolved">Resolved</option>
+              <option value="Closed">Closed</option>
+            </select>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label>Supplier Name</label>
+            <select class="form-control" ng-model="selected" (change)="onChangeSupplier($event)">
+              <option selected value></option>
+              <ng-container *ngFor="let supplier of suppliers">
+                <option value="{{supplier.supplierName}}"> {{supplier.supplierName}} </option>
+              </ng-container>
+            </select>
+          </div>
+        </div>
+        <br>
+
+        <div class="row">
+          <div class="col-md-4 mb-3">
+            <label> Search by Order Id </label>
+            <div class="form-group">
+              <div class="input-group">
+                <input #searchId type="text" class="form-control" (focusout)="focusOutOrderIdInput(searchId.value)">
+                <div class="input-group-btn">
+                  <button type="button" class="btn btn-md btn-warning" (click)="onClickSearchByOrderId(searchId.value)">
+                    <span class=" glyphicon glyphicon-search">
+                      <i class="fa fa-search" aria-hidden="true"></i>
+                    </span>
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
-          <br>
-           
-          <div class="row">
-              <div class="col-md-4 mb-3">        
-                  <label> Search by Order Id </label>
-                  <div class="form-group">
-                    <div class="input-group">
-                      <input type="text" class="form-control input-md" name="search">
-                      <div class="input-group-btn">
-                        <button type="button" class="btn btn-md btn-warning">
-                          <span class=" glyphicon glyphicon-search">
-                            <i class="fa fa-search" aria-hidden="true"></i>
-                          </span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>         
+          <div class="col-md-4 mb-3">
+            <label> Search by Date</label>
+            <div class="form-group">
+              <div class="input-group">
+                <input #searchDate type="text" class="form-control input-md" name="search" (focusout)="focusOutDateInput(searchDate.value)">
+                <div class="input-group-btn">
+                  <button type="button" class="btn btn-md btn-warning" (click)="onClickSearchByDate(searchDate.value)">
+                    <span class=" glyphicon glyphicon-search">
+                      <i class="fa fa-search" aria-hidden="true"></i>
+                    </span>
+                  </button>
+                </div>
               </div>
-              <div class="col-md-4 mb-3">        
-                  <label> Search by Date Range</label>
-                  <div class="form-group">
-                    <div class="input-group">
-                      <input type="text" class="form-control input-md" name="search">
-                      <div class="input-group-btn">
-                        <button type="button" class="btn btn-md btn-warning">
-                          <span class=" glyphicon glyphicon-search">
-                            <i class="fa fa-search" aria-hidden="true"></i>
-                          </span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>         
-              </div>             
             </div>
+          </div>
+        </div>
 
-          <!--display higher bill orders part-->
+        <!--display higher bill orders part-->
 
-          <div class="card" *ngIf="!isLoading">
-            <h4 class="card-header">Current Higher Bill Orders</h4>
-            <div class="card-block">
-              <table class="table table-bordered table-striped">
-                <thead class="thead-default">
-                  <tr>
-                    <th>Order Id</th>
-                    <th>Supplier</th>
-                    <th>Site</th>
-                    <th>Required Date</th>
-                    <th>Status</th>
-                    <th>View Details</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody *ngIf="orders.length === 0">
-                  <tr>
-                    <td colspan="4">There are no curreut item in the order list.</td>
-                  </tr>  
-                </tbody>
-                <tbody *ngIf="!isEditing">
-                  <tr *ngFor="let order of orders">
-                    <td>{{order.orderId}}</td>
-                    <td>{{order.suppiler}}</td>
-                    <td>{{order.site}}</td>
-                    <td>{{order.requiredDate}}</td>
-                    <td>{{order.status}}</td>
-                    <td><button class="btn btn-primary" type="submit"><i class="fa fa-eye">View Order</i></button></td>
-                    <td><button class="btn btn-primary" type="submit"><i class="fa fa-window-close">ACCEPT</i></button><button class="btn btn-primary" type="submit"><i class="fa fa-window-close">DECLINE</i></button></td>
-                    
-                    <!-- <td>
+        <div class="card" *ngIf="!isLoading">
+          <h4 class="card-header">Current Special Items Orders</h4>
+          <div class="card-block">
+            <table class="table table-bordered table-striped">
+              <thead class="thead-default">
+                <tr>
+                  <th>Order Id</th>
+                  <th>Supplier</th>
+                  <th>Site</th>
+                  <th>Required Date</th>
+                  <th>Status</th>
+                  <th>View Details</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody *ngIf="orders.length === 0">
+                <tr>
+                  <td colspan="4">There are no current items in the order list.</td>
+                </tr>
+              </tbody>
+              <tbody *ngIf="!isEditing">
+                <tr *ngFor="let order of orders">
+                  <td>{{order.OrderID}}</td>
+                  <td>{{order.supplierName}}</td>
+                  <td>{{order.siteName}}</td>
+                  <td>{{order.requiredDate}}</td>
+                  <td>{{order.orderStatusBySM}}</td>
+                  <td>
+                    <button class="btn btn-primary" type="submit">
+                      <i class="fa fa-eye">View Order</i>
+                    </button>
+                  </td>
+                  <td>
+                    <button class="btn btn-primary" type="submit">
+                      <i class="fa fa-check-square-o">ACCEPT</i>
+                    </button>&nbsp;&nbsp;
+                    <button class="btn btn-primary" type="submit">
+                      <i class="fa fa-window-close">DECLINE</i>
+                    </button>
+                  </td>
+
+                  <!-- <td>
                       <button class="btn btn-sm btn-warning" (click)="enableEditing(cat)"><i class="fa fa-pencil"></i> Edit</button> 
                       <button class="btn btn-sm btn-danger" (click)="deleteCat(cat)"><i class="fa fa-trash"></i> Delete</button>
                     </td> -->
-                  </tr>  
-                </tbody>
-                <tbody *ngIf="isEditing">
-                  <tr>
-                    <td colspan="4">
-                      <form class="form-inline"  style="display:inline">
-                        <div class="form-group">
-                          <input class="form-control" type="text" name="orderId"  placeholder="OrderId">
-                        </div>
-                        <div class="form-group">
-                            <input class="form-control" type="text" name="supplier"  placeholder="Supplier" >
-                          </div>
-                        <div class="form-group">
-                          <input class="form-control" type="text" name="site"  placeholder="Site">
-                        </div>
-                        <div class="form-group">
-                          <input class="form-control" type="number" name="requiredDate"  placeholder="RequiredDate" >
-                        </div> 
-                        <div class="form-group">
-                          <input class="form-control" type="text" name="status"  placeholder="Status">
-                        </div>                       
-                      </form>
-                      <button class="btn btn-primary" type="submit"><i class="fa fa-eye">View Order</i></button>
-                      <button class="btn btn-primary" type="submit"><i class="fa fa fa-check">ACCEPT</i></button>
-                     <button class="btn btn-primary" type="submit"><i class="fa fa-window-close">DECLINE</i></button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+                </tr>
+              </tbody>
+              <tbody *ngIf="isEditing">
+                <tr>
+                  <td colspan="4">
+                    <form class="form-inline" style="display:inline">
+                      <div class="form-group">
+                        <input class="form-control" type="text" name="orderId" placeholder="OrderId">
+                      </div>
+                      <div class="form-group">
+                        <input class="form-control" type="text" name="supplier" placeholder="Supplier">
+                      </div>
+                      <div class="form-group">
+                        <input class="form-control" type="text" name="site" placeholder="Site">
+                      </div>
+                      <div class="form-group">
+                        <input class="form-control" type="number" name="requiredDate" placeholder="RequiredDate">
+                      </div>
+                      <div class="form-group">
+                        <input class="form-control" type="text" name="status" placeholder="Status">
+                      </div>
+                    </form>
+                    <button class="btn btn-primary" type="submit">
+                      <i class="fa fa-eye">View Order</i>
+                    </button>
+                    <button class="btn btn-primary" type="submit">
+                      <i class="fa fa fa-check">ACCEPT</i>
+                    </button>
+                    <button class="btn btn-primary" type="submit">
+                      <i class="fa fa-window-close">DECLINE</i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-          <br>             
-        </form>
+        </div>
+        <br>
+      </form>
