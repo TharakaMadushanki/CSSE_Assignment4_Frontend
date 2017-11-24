@@ -30,6 +30,13 @@ export class ViewOrderDetailsComponent implements OnInit {
         console.log(order);       
        this.orders = order
      })
-    });
+    }); 
   }
+  
+
+  // public editOrder(item): void {  // event will give you full breif of action
+  //   const newVal = item.quantity;
+  //   console.log(newVal);
+  //     this.editOrderDetails(newVal);
+  // }
 }
