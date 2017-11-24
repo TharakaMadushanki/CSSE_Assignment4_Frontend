@@ -30,17 +30,15 @@
           <div class="row">
             <div class="col-md-4 mb-3">  
               <label>Supplier Name</label>             
-              <select id="sup" class="form-control" ng-model="selected">
+              <select id="sup" class="form-control" ng-model="selected" (change)="onChangeState($event)">
                   <option selected value></option>
-                <ng-container *ngFor="let supplier of suppliers">
-                  <option value=""> {{supplier.supplierName}} </option>   
+                <ng-container *ngFor="let supplier of suppliersSearch">
+                  <option value="{{supplier.supplierName}}"> {{supplier.supplierName}} </option>   
                 </ng-container>              
               </select>
             </div>                            
           </div>
           <br>
-      
-          <!--display order item part-->
 
           <div class="card">
             <h4 class="card-header">Supllier Name List</h4>
