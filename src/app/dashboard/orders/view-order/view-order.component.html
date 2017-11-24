@@ -33,17 +33,17 @@
               <select class="form-control" (change)="onChangeState($event)">
                 <option selected value></option>
                 <option value="pending">Pending</option>
-                <option value="inProgress">In Progress</option>
+                <option value="inProgress">InProgress</option>
                 <option value="resolved">Resolved</option>
                 <option value="closed">Closed</option>
               </select>              
             </div>
             <div class="col-md-4 mb-3">  
               <label>Supplier Name</label>             
-              <select class="form-control" ng-model="selected" >
+              <select class="form-control" ng-model="selected"  (change)="onChangeSupplier($event)">
                 <option selected value></option>   
                 <ng-container *ngFor="let supplier of suppliers">
-                  <option value=""> {{supplier.supplierName}} </option>   
+                  <option value="{{supplier.supplierName}}"> {{supplier.supplierName}} </option>   
                 </ng-container>              
               </select>
             </div>            
@@ -55,9 +55,11 @@
                   <label> Search by Order Id </label>
                   <div class="form-group">
                     <div class="input-group">
-                      <input type="text" class="form-control input-md" name="search">
+                      <input  #searchId type="text" class="form-control" 
+                              (focusout)="focusOutOrderIdInput(searchId.value)">
                       <div class="input-group-btn">
-                        <button type="button" class="btn btn-md btn-warning">
+                        <button type="button" class="btn btn-md btn-warning" 
+                        (click)="onClickSearchByOrderId(searchId.value)">
                           <span class=" glyphicon glyphicon-search">
                             <i class="fa fa-search" aria-hidden="true"></i>
                           </span>
@@ -70,9 +72,11 @@
                   <label> Search by Date</label>
                   <div class="form-group">
                     <div class="input-group">
-                      <input type="text" class="form-control input-md" name="search">
+                      <input  #searchDate type="text" class="form-control input-md" 
+                      (focusout)="focusOutDateInput(searchDate.value)">
                       <div class="input-group-btn">
-                        <button type="button" class="btn btn-md btn-warning">
+                        <button type="button" class="btn btn-md btn-warning"
+                        (click)="onClickSearchByDate(searchDate.value)">
                           <span class=" glyphicon glyphicon-search">
                             <i class="fa fa-search" aria-hidden="true"></i>
                           </span>
