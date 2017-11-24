@@ -57,6 +57,32 @@ export class ViewOrderComponent implements OnInit {
     })
   }
 
+  getOrderDataBySuppplier(val:String){
+    return this.http.get('http://localhost:4000/procument/placeOrder/supplier/'+val)
+    .map((res: Response)=>res.json()).subscribe(order=> {
+      console.log(order);       
+      this.orders = order
+    })
+  }
+
+  getOrderDataByOrderId(orderID:String){
+    return this.http.get('http://localhost:4000/procument/placeOrder/id/'+orderID)
+    .map((res: Response)=>res.json()).subscribe(order=> {
+      console.log(order);       
+      this.orders = order
+    })
+  }
+
+  getOrderDataByDate(date:Date){
+    return this.http.get('http://localhost:4000/procument/placeOrder/date/'+date)
+    .map((res: Response)=>res.json()).subscribe(order=> {
+      console.log(order);       
+      this.orders = order
+    })
+  }
+
+
+
 
   public onChangeState(event): void {  // event will give you full breif of action
     const newVal = event.target.value;
@@ -69,4 +95,60 @@ export class ViewOrderComponent implements OnInit {
       this.getOrderDataByStatus(newVal);
   }
 
+  public onChangeSupplier(event): void {  // event will give you full breif of action
+    const newVal = event.target.value;
+    console.log(newVal);
+    if(newVal == null || newVal == ""){
+      this.getOrderData();
+      this.getOrder();   
+    }
+    else
+      this.getOrderDataBySuppplier(newVal);
+  }
+
+  public onClickSearchByOrderId(orderID): void {  // event will give you full breif of action
+    const newVal = orderID;
+    console.log("ordrid"+ newVal);
+    if(newVal == null || newVal == ""){
+      this.getOrderData();
+      this.getOrder();   
+    }
+    else
+      this.getOrderDataByOrderId(newVal);
+  }
+
+  public  focusOutOrderIdInput(oldVal): void {  // event will give you full breif of action
+    const newVal = oldVal;
+    console.log("ordrid"+ newVal);
+    if(newVal == null || newVal == ""){
+      this.getOrderData();
+      this.getOrder();   
+    }
+   
+  }
+
+  public onClickSearchByDate(date): void {  // event will give you full breif of action
+    const newVal = date;
+    console.log("date"+ newVal);
+    if(newVal == null || newVal == ""){
+      this.getOrderData();
+      this.getOrder();   
+    }
+    else
+      this.getOrderDataByDate(newVal);
+  }
+
+  public  focusOutDateInput(oldVal): void {  // event will give you full breif of action
+    const newVal = oldVal;
+    console.log("ordrid"+ newVal);
+    if(newVal == null || newVal == ""){
+      this.getOrderData();
+      this.getOrder();   
+    }
+   
+  }
+
+ 
+
+ 
 }
