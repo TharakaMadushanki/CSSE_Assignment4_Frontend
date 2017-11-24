@@ -18,7 +18,7 @@
   </div>
   <!-- /.row -->
 
-  <form>
+  <form [formGroup]="">
     <label>
       <h3>View Invoice Lists</h3>
     </label>
@@ -124,7 +124,7 @@
           <tbody *ngIf="isEditing">
             <tr>
               <td colspan="4">
-                <form class="form-inline" style="display:inline">
+                <form class="form-inline" style="display:inline" [formGroup]="">
                   <div class="form-group">
                     <input class="form-control" type="text" name="orderId">
                   </div>
