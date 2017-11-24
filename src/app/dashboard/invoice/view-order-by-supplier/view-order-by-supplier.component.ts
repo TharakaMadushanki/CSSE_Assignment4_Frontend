@@ -65,6 +65,22 @@ export class ViewOrderBySupplierComponent implements OnInit {
         this.orders = order
       })
     }
+
+    AcceptOrder(id){
+      return this.http.put('/placeOrder/supplierstatus/'+id , { "orderStatusBySup" : "Accepted" })
+      .map((res: Response)=>res.json()).subscribe(order=> {
+          alert("Order Accepted!!!");
+      })
+    }
+
+    RejectOder(id){
+      return this.http.put('/placeOrder/supplierstatus/'+id , { "orderStatusBySup" : "Rejected" })
+      .map((res: Response)=>res.json()).subscribe(order=> {
+          alert("Order Rejected!!!");
+      })
+    }
+
+
   
     getOrderDataByOrderId(orderID:String){
       return this.http.get('http://localhost:4000/procument/placeOrder/id/'+orderID)

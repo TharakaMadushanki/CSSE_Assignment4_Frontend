@@ -17,6 +17,10 @@ export class AddOrderComponent implements OnInit {
   supplierByName: any = [];
   siteByName: any = [];
   AddorderForm: FormGroup;
+  site: any;
+  supplier: any;
+  priority: any;
+  item : any;
 
   constructor(private http: Http) { }
 
@@ -142,6 +146,11 @@ export class AddOrderComponent implements OnInit {
     })
   }
 
+
+
+
+  
+
   getSiteByName(siteName) {
     this.getSiteDataByName(siteName).subscribe(site => {
       console.log(site);
@@ -159,14 +168,26 @@ export class AddOrderComponent implements OnInit {
 
   public onChangeSite(event): void {  // event will give you full breif of action
     const newVal = event.target.value;
+    this.site = event.target.value;
     console.log(newVal);
     this.getSiteByName(newVal);
   }
 
   public onChangeSupplier(event): void {  // event will give you full breif of action
     const newVal = event.target.value;
+    this.supplier = event.target.value;
     console.log(newVal);
     this.getSupplierByName(newVal);
+  }
+
+  
+ 
+
+  onChangePriority(event) {
+    this.priority = event.target.value;
+  }
+  onChangeItem(event) {
+    this.item = event.target.value;
   }
 
 }

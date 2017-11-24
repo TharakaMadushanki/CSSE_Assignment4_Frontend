@@ -16,10 +16,7 @@ export class CreateInvoiceComponent implements OnInit {
   order: any = [];
   orderID: any;
   orderByID: any = [];
-  site: any;
-  supplier: any;
-  priority: any;
-  item : any;
+  
 
 
   constructor(private http: Http) { }
@@ -100,19 +97,5 @@ export class CreateInvoiceComponent implements OnInit {
     })
   }
 
-  onChangeSite(event) {
-    this.site = event.target.value;
-  }
-
-  onChangeSupplier(event) {
-    this.supplier = event.target.value;
-  }
-
-  onChangePriority(event) {
-    this.priority = event.target.value;
-  }
-  onChangeItem(event) {
-    this.item = event.target.value;
-  }
 
 }
