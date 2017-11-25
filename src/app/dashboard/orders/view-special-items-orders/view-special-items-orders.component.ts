@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { Http, Response } from '@angular/http';
+import { FormControl, FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-view-special-items-orders',
@@ -12,12 +13,17 @@ export class ViewSpecialItemsOrdersComponent implements OnInit {
   suppliers: any = [];
   orders: any = [];
   type: String;
+  specialOrderForm: FormGroup;
 
   constructor(private http: Http) { }
 
   ngOnInit() {
     this.getSupplier();
     this.getOrder();
+
+    this.specialOrderForm = new FormGroup({
+      id: new FormControl('', [Validators.required])
+    });
   }
 
   getSupplier() {
@@ -130,6 +136,22 @@ export class ViewSpecialItemsOrdersComponent implements OnInit {
       this.getOrder();
     }
 
+  }
+
+  updateStatus() {
+    var oId = {
+      id : this.specialOrderForm.controls['id'].value,
+
+    };
+    var status = {orderStatusByUprM:'Accepted'};
+
+    //this.type = "Special";
+    this.http.put('http://localhost:4000/procument/placeOrder/orderId/'+this.specialOrderForm.controls['id'].value, status).subscribe(
+      function (response) {
+        alert("Order Accepted !");
+      }
+    );
+    console.log(oId);
   }
 
 }
