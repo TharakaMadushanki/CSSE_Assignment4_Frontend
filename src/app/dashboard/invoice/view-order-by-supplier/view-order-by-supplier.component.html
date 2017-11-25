@@ -112,10 +112,9 @@
                       <td id="date" class="text-center">{{order.requiredDate}}</td>
                       <td id="status" class="text-center">{{order.orderStatusBySM}}</td>
                       <td id="actions" class="text-center">
-                          <a routerLink="/dashboard/order/View_Order_Details" 
-                          [queryParams]="{ orderId: order._id }"><button class="btn btn-success" type="submit" 
-                            (click)="viewBtnClick(order._id)">Accept Order</button></a></td>
-                      <td><button class="btn btn-danger" type="submit">Reject Order</button></td>
+                          <button class="btn btn-success" type="submit" 
+                            (click)="AcceptOrder(order.OrderID)">Accept Order</button></td>
+                      <td><button class="btn btn-danger" type="submit" (click)="RejectOder(order.OrderID)">Reject Order</button></td>
                                                                
                       <!-- <td>
                         <button class="btn btn-sm btn-warning" (click)="enableEditing(cat)"><i class="fa fa-pencil"></i> Edit</button> 
